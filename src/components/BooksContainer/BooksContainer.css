@@ -1,0 +1,13 @@
+.books-container-view {
+	display: flex;
+	flex-direction: column;
+}
+
+.card-container {
+	display: grid;
+	grid-template-columns: repeat(6, 11.2rem);
+	grid-gap: 0.7rem;
+	padding-left: 7rem;
+	padding-right: 7rem;
+	padding-top: 1rem;
+}
