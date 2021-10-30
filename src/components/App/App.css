@@ -1,8 +1,24 @@
 .App {
   text-align: center;
+  background-image: none;
+  width: 100%;
+  /* border: 2px solid lime; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-image: url("../../images/bg3.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.App-logo {
+.landing-body {
+  width: 40%;
+  height: 100vh;
+  right: 0;
+  border: 2px solid pink;
+}
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +51,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
