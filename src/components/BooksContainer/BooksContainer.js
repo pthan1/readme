@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { QueryContext } from '../../context/QueryContext';
 import BookCard from '../BookCard/BookCard';
 import './BooksContainer.css';
 
@@ -7,14 +8,16 @@ const BooksContainer = () => {
 		searchResults,
 		setSearchResults
 	] = useState([]);
+	const { bookTitle } = useContext(QueryContext)
 
-	useEffect(() => {
-		const fetchResults = fetch(
-			'https://www.googleapis.com/books/v1/volumes?q=dune+subject:fiction&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w'
+	useEffect((bookTitle) => {
+			fetch(
+			`https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
 		)
 			.then((response) => response.json())
-			.then((data) => setSearchResults(data.items));
-	}, []);
+			.then((data) => console.log(data));
+	}, [bookTitle]);
+
 
 	const bookCards = searchResults.map((searchResult) => {
 		return (
@@ -24,14 +27,16 @@ const BooksContainer = () => {
 		);
 	}, []);
 
-	return (
+	return bookTitle ? (
 		<div className="books-container-view">
 			<div>
 				<h2>Our Recommendations</h2>
 			</div>
 			<div className="card-container">{bookCards}</div>
 		</div>
-	);
+	) : (
+		<div><h2>something went wrong</h2></div>
+	)
 };
 
 export default BooksContainer;
