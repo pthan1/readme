@@ -1,16 +1,17 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
+import { QueryContext } from "../../context/QueryContext"
 import './SearchBar.css'
 
 const SearchBar = ( ) => {
   const [book, setBook] = useState('')
+  const { addBookTitle } = useContext(QueryContext)
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    fetch(`googleAPI${book}`)
-    .then(response => response.json())
-    .then()
+    addBookTitle(book)
     setBook('')
   }
+  
   const handleChange = (event) => {
     setBook(event.target.value)
   }
