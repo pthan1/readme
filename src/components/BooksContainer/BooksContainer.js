@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { QueryContext } from '../../context/QueryContext';
 import BookCard from '../BookCard/BookCard';
 import './BooksContainer.css';
+import uniqueString from 'unique-string';
 
 const BooksContainer = () => {
 	const [
@@ -17,7 +18,22 @@ const BooksContainer = () => {
 				`https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
 			)
 				.then((response) => response.json())
-				.then((data) => console.log(data));
+				.then((data) => {
+					const cardInfo = data.items.map((result) => {
+						let bookKey = uniqueString();
+						return {
+							authors: result.volumeInfo.authors,
+							averageRating: result.volumeInfo.averageRating,
+							categories: result.volumeInfo.categories,
+							description: result.volumeInfo.categories,
+							imageLinks: result.volumeInfo.imageLinks,
+							title: result.volumeInfo.title,
+							key: bookKey
+						};
+					});
+
+					setSearchResults(cardInfo);
+				});
 		},
 		[
 			bookTitle
@@ -27,7 +43,14 @@ const BooksContainer = () => {
 	const bookCards = searchResults.map((searchResult) => {
 		return (
 			<BookCard
-			// className={'card'} id={id} key={key} poster_path={path} title={title}
+				className={'card'}
+				authors={searchResult.authors}
+				averageRating={searchResult.averageRating}
+				categories={searchResult.categories}
+				description={searchResult.categories}
+				imageLinks={searchResult.imageLinks}
+				title={searchResult.title}
+				key={searchResult.key}
 			/>
 		);
 	}, []);
