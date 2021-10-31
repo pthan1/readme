@@ -15,10 +15,11 @@ const BooksContainer = () => {
 		() => {
 			console.log(bookTitle);
 			fetch(
-				`https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
+				`https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&maxResults=30&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
 			)
 				.then((response) => response.json())
 				.then((data) => {
+					console.log(data.items.length);
 					const cardInfo = data.items.map((result) => {
 						let bookKey = uniqueString();
 						return {
