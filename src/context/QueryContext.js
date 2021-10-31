@@ -11,11 +11,9 @@ const QueryContextProvider = (props) => {
 	const addBookTitle = (userInput) => {
 		const processedInput = userInput.split(' ');
 		if (processedInput.length === 1) {
-			console.log('in if block', userInput);
 			setBookTitle(userInput);
 		} else {
 			const multipleQuery = processedInput.join('+');
-			console.log('mQ', multipleQuery);
 			setBookTitle(multipleQuery);
 		}
 	};
