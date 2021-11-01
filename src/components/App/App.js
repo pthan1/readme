@@ -13,7 +13,7 @@ const App = () => {
 		<div className="App">
 				<QueryContextProvider>
 					<Route exact path='/' >
-					<LandingPage />
+						<LandingPage />
 					</Route>
 					<Route exact path='/search/:searchTerm' render={( { match } ) => {
 						return (

@@ -15,7 +15,7 @@ const BooksContainer = () => {
 		() => {
 			if (searchToggle) {
 			fetch(
-				`https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
+				`https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&maxResults=15&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
 			)
 				.then((response) => response.json())
 				.then((data) => {
@@ -59,8 +59,7 @@ const BooksContainer = () => {
 					setSearchResults(cardInfo); 
 					switchSearchToggle();
 				})
-		}}, [bookTitle]
-	);
+		}}, [bookTitle]);
 			
 			const bookCards = searchResults.map((searchResult) => {
 				return (
