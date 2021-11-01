@@ -1,10 +1,11 @@
 import React from 'react';
 import './BookCard.css';
 
-const BookCard = () => {
+const BookCard = ({ imageLinks, title }) => {
 	return (
 		<div className="book-card">
-			<h1>Book Card</h1>
+			<img src={imageLinks} />
+			<p>{title}</p>
 		</div>
 	);
 };

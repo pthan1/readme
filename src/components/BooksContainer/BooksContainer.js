@@ -19,44 +19,39 @@ const BooksContainer = () => {
 			)
 				.then((response) => response.json())
 				.then((data) => {
-					console.log(data.items.length);
-					const cardInfo = data.items.map((result) => {
-						let bookKey = uniqueString();
-						return {
-							authors: result.volumeInfo.authors,
-							averageRating: result.volumeInfo.averageRating,
-							categories: result.volumeInfo.categories,
-							description: result.volumeInfo.categories,
-							imageLinks: result.volumeInfo.imageLinks,
-							title: result.volumeInfo.title,
-							key: bookKey
-						};
+					console.log(data);
+					const filteredResults = data.items.filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title
+					);
+					const cardInfo = filteredResults.map((result) => {
+						if (result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title) {
+							console.log(result);
+							let bookKey = uniqueString();
+							return {
+								categories: result.volumeInfo.categories,
+								imageLinks: result.volumeInfo.imageLinks.thumbnail,
+								title: result.volumeInfo.title,
+								key: bookKey
+							};
+						}
 					});
-
 					setSearchResults(cardInfo);
-				});
-		},
-		[
-			bookTitle
-		]
-	);
+				})
+			}, [bookTitle]
+			);
+			
+			const bookCards = searchResults.map((searchResult) => {
+				return (
+					<BookCard
+						className={'card'}
+						imageLinks={searchResult.imageLinks}
+						title={searchResult.title}
+						key={searchResult.key}
+					/>
+				);
+			})
 
-	const bookCards = searchResults.map((searchResult) => {
-		return (
-			<BookCard
-				className={'card'}
-				authors={searchResult.authors}
-				averageRating={searchResult.averageRating}
-				categories={searchResult.categories}
-				description={searchResult.categories}
-				imageLinks={searchResult.imageLinks}
-				title={searchResult.title}
-				key={searchResult.key}
-			/>
-		);
-	}, []);
 
-	return bookTitle ? (
+			return searchResults ? (
 		<div className="books-container-view">
 			<div>
 				<h2>Our Recommendations</h2>
