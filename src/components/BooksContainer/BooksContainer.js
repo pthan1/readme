@@ -9,35 +9,58 @@ const BooksContainer = () => {
 		searchResults,
 		setSearchResults
 	] = useState([]);
-	const { bookTitle } = useContext(QueryContext);
+	const { bookTitle, category, addCategory, searchToggle, switchSearchToggle } = useContext(QueryContext);
 
 	useEffect(
 		() => {
-			console.log(bookTitle);
+			if (searchToggle) {
 			fetch(
-				`https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&maxResults=30&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
+				`https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
 			)
 				.then((response) => response.json())
 				.then((data) => {
-					console.log(data);
-					const filteredResults = data.items.filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title
+						const filteredResults = data.items.filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title
 					);
 					const cardInfo = filteredResults.map((result) => {
 						if (result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title) {
-							console.log(result);
 							let bookKey = uniqueString();
 							return {
-								categories: result.volumeInfo.categories,
+								category: result.volumeInfo.categories[0],
 								imageLinks: result.volumeInfo.imageLinks.thumbnail,
 								title: result.volumeInfo.title,
 								key: bookKey
 							};
 						}
 					});
-					setSearchResults(cardInfo);
+					setSearchResults(cardInfo); 
 				})
-			}, [bookTitle]
-			);
+			}
+		if (!searchToggle) {
+			fetch(
+				`https://www.googleapis.com/books/v1/volumes?q=subject:${category}&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
+			)
+				.then((response) => response.json())
+				.then((data) => { 
+						const filteredResults = data.items.filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title
+					).filter(result => result.volumeInfo.averageRating).sort((a, b) => b.volumeInfo.averageRating - a.volumeInfo.averageRating)
+					
+					const cardInfo = filteredResults.map((result) => {
+						if (result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title) {
+							let bookKey = uniqueString();
+							return {
+								category: result.volumeInfo.categories[0],
+								imageLinks: result.volumeInfo.imageLinks.thumbnail,
+								title: result.volumeInfo.title,
+								key: bookKey,
+								averageRating: result.volumeInfo.averageRating,
+							};
+						}
+					});
+					setSearchResults(cardInfo); 
+					switchSearchToggle();
+				})
+		}}, [bookTitle]
+	);
 			
 			const bookCards = searchResults.map((searchResult) => {
 				return (
@@ -46,6 +69,9 @@ const BooksContainer = () => {
 						imageLinks={searchResult.imageLinks}
 						title={searchResult.title}
 						key={searchResult.key}
+						category={searchResult.category}
+						addCategory={addCategory}
+						switchSearchToggle={switchSearchToggle}
 					/>
 				);
 			})

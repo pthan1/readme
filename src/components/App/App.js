@@ -23,6 +23,14 @@ const App = () => {
 							</>
 						)
 					}} />
+					<Route exact path='/recommendations' render={( { match } ) => {
+						return (
+							<>
+							 <Nav />
+							 <BooksContainer />
+							</>
+						)
+					}} />
 				</QueryContextProvider>	
 		</div>
 	);
