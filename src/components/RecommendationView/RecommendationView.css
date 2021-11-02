@@ -1,4 +1,4 @@
-.books-container-view {
+.recommendation-view {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -8,14 +8,14 @@
   height: max-content;
 }
 
-.display-body {
+.display-body-recommendation {
   margin-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-.p-prompt {
+.p-prompt-recommendation {
   width: 200px;
   text-align: center;
   padding-top: 30px;
@@ -23,7 +23,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.card-container {
+.card-container-recommendation {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

@@ -1,18 +1,19 @@
-import React from 'react'
-import './Nav.css'
-import SearchBar from '../SearchBar/SearchBar'
+import React from "react"
+import "./Nav.css"
+import SearchBar from "../SearchBar/SearchBar"
+import logo2 from "../../images/logo-book2.png"
 
 const NavBar = () => {
-  return ( 
-    <nav>
-      <h1>readME</h1>
+  return (
+    <nav className="nav-bar">
+      <img src={logo2} />
       <SearchBar />
       <ul>
         <li> Log In </li>
         <li> Read List</li>
       </ul>
     </nav>
-   );
+  )
 }
- 
-export default NavBar;
+
+export default NavBar
