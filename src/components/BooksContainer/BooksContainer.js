@@ -40,8 +40,7 @@ const BooksContainer = () => {
         imageLinks={searchResult.imageLinks}
         title={searchResult.title}
         key={searchResult.key}
-        category={searchResult.category}
-        addCategory={addCategory}
+        bookCategory={searchResult.category}
       />
     )
   })

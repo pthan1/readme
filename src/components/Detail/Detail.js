@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useContext } from "react"
 import { QueryContext } from "../../context/QueryContext"
 import BookCard from "../BookCard/BookCard"
-import "./BooksContainer.css"
 import uniqueString from "unique-string"
 import Nav from "../Nav/Nav"
+import "./Detail.css"
 
 const Detail = params => {
+  const [bookInfo, setBookInfo] = useState({})
+  const { findBook, addBookToFind } = useContext(QueryContext)
+
   return (
     <div className="detail-view">
       <Nav />

@@ -5,6 +5,7 @@ import QueryContextProvider from "../../context/QueryContext"
 import { Route } from "react-router-dom"
 import LandingPage from "../LandingPage/LandingPage"
 import RecommendationView from "../RecommendationView/RecommendationView"
+import Detail from "../Detail/Detail"
 
 const App = () => {
   return (
@@ -13,16 +14,9 @@ const App = () => {
         <Route exact path="/">
           <LandingPage />
         </Route>
-        <Route
-          exact
-          path="/search/:searchTerm"
-          render={() => <BooksContainer />}
-        />
-        <Route
-          exact
-          path="/recommendations"
-          render={() => <RecommendationView />}
-        />
+        <Route exact path="/search/:searchTerm" render={() => <BooksContainer />} />
+        <Route exact path="/recommendations" render={() => <RecommendationView />} />
+        <Route exact path="/details/" render={() => <Detail />} />
       </QueryContextProvider>
     </div>
   )
