@@ -78,12 +78,16 @@ const BooksContainer = () => {
 
   return searchResults ? (
     <>
-      <Nav />
       <div className="books-container-view">
-        <div>
-          <h2>Our Recommendations</h2>
+        <Nav />
+        <div className="display-body">
+          {searchToggle ? (
+            <p className="p-prompt">To give your more precise recommendations, please select one of these books</p>
+          ) : (
+            <h2>Our Recommendations</h2>
+          )}
+          <div className="card-container">{bookCards}</div>
         </div>
-        <div className="card-container">{bookCards}</div>
       </div>
     </>
   ) : (

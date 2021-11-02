@@ -1,0 +1,28 @@
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  background-color: #59504776;
+}
+
+.nav-bar ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.nav-bar li {
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.nav-bar .search-container {
+  margin-top: 0;
+}
+
+.nav-bar img {
+  height: 80px;
+}
