@@ -1,0 +1,41 @@
+.recommendation-view {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  border: 2px solid red;
+  background-color: #d9d5d2;
+  height: max-content;
+}
+
+.display-body-recommendation {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.p-prompt-recommendation {
+  width: 200px;
+  text-align: center;
+  padding-top: 30px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-container-recommendation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  min-height: 80vh;
+  width: 60vw;
+
+  background-color: #a69485;
+  height: max-content;
+  border-radius: 25px;
+  box-shadow: rgba(72, 64, 64, 0.825) -10px 5px 25px 0px;
+  padding: 30px;
+}

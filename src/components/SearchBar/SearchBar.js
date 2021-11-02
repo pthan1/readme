@@ -4,17 +4,14 @@ import './SearchBar.css';
 import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
-	const [
-		book,
-		setBook
-	] = useState('');
+	const [book,setBook] = useState('');
 	const { addBookTitle } = useContext(QueryContext);
 	const history = useHistory();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		addBookTitle(book);
-		history.push(`${book}`);
+		history.push(`search/${book}`);
 		setBook('');
 	};
 

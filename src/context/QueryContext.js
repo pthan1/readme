@@ -5,7 +5,6 @@ export const QueryContext = createContext();
 const QueryContextProvider = (props) => {
 	const [bookTitle,setBookTitle] = useState('');
 	const [category, setCategory] = useState('');
-	const [searchToggle, setSearchToggle] = useState(true);
 
 	const addBookTitle = (userInput) => {
 		const processedInput = userInput.split(' ');
@@ -17,10 +16,6 @@ const QueryContextProvider = (props) => {
 		}
 	};
 
-	const switchSearchToggle = () => {
-		setSearchToggle(!searchToggle);
-	}
-
 	const addCategory = (userCategory) => {
 		const processedInput = userCategory.split(' ');
 		if (processedInput.length === 1) {
@@ -31,7 +26,7 @@ const QueryContextProvider = (props) => {
 		}
 	}
 
-	return <QueryContext.Provider value={{ bookTitle, addBookTitle, searchToggle, switchSearchToggle, category, addCategory }} >
+	return <QueryContext.Provider value={{ bookTitle, addBookTitle, category, addCategory }} >
     {props.children}
     </QueryContext.Provider>;
 };

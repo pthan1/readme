@@ -4,6 +4,7 @@ import BooksContainer from "../BooksContainer/BooksContainer"
 import QueryContextProvider from "../../context/QueryContext"
 import { Route } from "react-router-dom"
 import LandingPage from "../LandingPage/LandingPage"
+import RecommendationView from "../RecommendationView/RecommendationView"
 
 const App = () => {
   return (
@@ -14,17 +15,13 @@ const App = () => {
         </Route>
         <Route
           exact
-          path="/:searchTerm"
-          render={({ match }) => {
-            return <BooksContainer />
-          }}
+          path="/search/:searchTerm"
+          render={() => <BooksContainer />}
         />
         <Route
           exact
           path="/recommendations"
-          render={({ match }) => {
-            return <BooksContainer />
-          }}
+          render={() => <RecommendationView />}
         />
       </QueryContextProvider>
     </div>
