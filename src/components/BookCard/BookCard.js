@@ -11,7 +11,7 @@ const BookCard = ({ imageLinks, title, category, addCategory, switchSearchToggle
 			switchSearchToggle();
 			history.push(`/recommendations`);
 			}} className="book-card">
-			<img src={imageLinks} />
+			<img src={imageLinks} alt={`${title} cover`}/>
 			<p>{title}</p>
 		</div>
 	);

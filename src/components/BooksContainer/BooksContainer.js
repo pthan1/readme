@@ -32,8 +32,7 @@ const BooksContainer = () => {
           })
           setSearchResults(cardInfo)
         })
-    }
-    if (!searchToggle) {
+    }else {
       fetch(
         `https://www.googleapis.com/books/v1/volumes?q=subject:${category}&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
       )
@@ -57,10 +56,10 @@ const BooksContainer = () => {
             }
           })
           setSearchResults(cardInfo)
-          switchSearchToggle()
+          // switchSearchToggle()
         })
     }
-  }, [bookTitle])
+  }, [bookTitle, category, searchToggle])
 
   const bookCards = searchResults.map(searchResult => {
     return (
@@ -76,25 +75,18 @@ const BooksContainer = () => {
     )
   })
 
-  return searchResults ? (
+  return searchResults && (
     <>
       <div className="books-container-view">
         <Nav />
         <div className="display-body">
           {searchToggle ? (
-            <p className="p-prompt">To give your more precise recommendations, please select one of these books</p>
+            <p className="p-prompt">To give you a more precise recommendations, please select one of these books</p>
           ) : (
             <h2>Our Recommendations</h2>
           )}
           <div className="card-container">{bookCards}</div>
         </div>
-      </div>
-    </>
-  ) : (
-    <>
-      <Nav />
-      <div>
-        <h2>something went wrong</h2>
       </div>
     </>
   )

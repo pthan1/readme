@@ -14,7 +14,7 @@ const SearchBar = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		addBookTitle(book);
-		history.push(`search/${book}`);
+		history.push(`${book}`);
 		setBook('');
 	};
 

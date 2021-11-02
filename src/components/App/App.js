@@ -1,11 +1,8 @@
 import "./App.css"
-import SearchBar from "../SearchBar/SearchBar"
 import BooksContainer from "../BooksContainer/BooksContainer"
-import BookCard from "../BookCard/BookCard"
-import BookOverview from "../BookOverview/BookOverview"
-import QueryContextProvider, { QueryContext } from "../../context/QueryContext"
+// import BookOverview from "../BookOverview/BookOverview"
+import QueryContextProvider from "../../context/QueryContext"
 import { Route } from "react-router-dom"
-import Nav from "../Nav/Nav"
 import LandingPage from "../LandingPage/LandingPage"
 
 const App = () => {
@@ -17,7 +14,7 @@ const App = () => {
         </Route>
         <Route
           exact
-          path="/search/:searchTerm"
+          path="/:searchTerm"
           render={({ match }) => {
             return <BooksContainer />
           }}
