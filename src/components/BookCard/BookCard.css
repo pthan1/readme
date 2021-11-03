@@ -1,5 +1,6 @@
 .book-card img {
   height: 210px;
+  max-width: 140px;
 }
 
 .book-card p {

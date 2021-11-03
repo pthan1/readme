@@ -14,9 +14,32 @@ const App = () => {
         <Route exact path="/">
           <LandingPage />
         </Route>
-        <Route exact path="/search/:searchTerm" render={() => <BooksContainer />} />
-        <Route exact path="/recommendations" render={() => <RecommendationView />} />
-        <Route exact path="/details/" render={() => <Detail />} />
+        <Route
+          exact
+          path="/:searchTerm"
+          render={({ match }) => {
+            console.log(match)
+            if (match.params.searchTerm !== "recommendations" && match.params.searchTerm !== "details") {
+              return <BooksContainer />
+            }
+          }}
+        />
+        <Route
+          exact
+          path="/recommendations"
+          render={({ match }) => {
+            return <RecommendationView />
+          }}
+        />
+        <Route
+          exact
+          path="/details/"
+          render={({ match }) => {
+            if (match.params.url === "details") {
+              return <Detail />
+            }
+          }}
+        />
       </QueryContextProvider>
     </div>
   )
