@@ -5,7 +5,7 @@ export const QueryContext = createContext()
 const QueryContextProvider = props => {
   const [bookTitle, setBookTitle] = useState("")
   const [category, setCategory] = useState("")
-  const [findBook, setFindBook] = useState("")
+  const [bookId, setBookId] = useState("")
   const [bookInfo, setBookInfo] = useState({})
 
   const addBookTitle = userInput => {
@@ -28,19 +28,13 @@ const QueryContextProvider = props => {
     }
   }
 
-  const addBookToFind = title => {
-    const processedTitle = title.split(" ")
-    if (processedTitle.length === 1) {
-      setFindBook(title)
-    } else {
-      const multipleQuery = processedTitle.join("+")
-      setFindBook(multipleQuery)
-    }
+  const addBookToFind = id => {
+    setBookId(id)
   }
 
   return (
     <QueryContext.Provider
-      value={{ bookTitle, addBookTitle, category, addCategory, findBook, addBookToFind, bookInfo, setBookInfo }}
+      value={{ bookTitle, addBookTitle, category, addCategory, bookId, addBookToFind, bookInfo, setBookInfo }}
     >
       {props.children}
     </QueryContext.Provider>

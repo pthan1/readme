@@ -17,7 +17,6 @@ const RecommendationView = () => {
     )
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         const filteredResults = data.items
           .filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title)
           .filter(result => result.volumeInfo.averageRating)
@@ -31,6 +30,7 @@ const RecommendationView = () => {
             title: result.volumeInfo.title,
             key: bookKey,
             averageRating: result.volumeInfo.averageRating,
+            id: result.id,
           }
         })
         setSearchResults(cardInfo)
@@ -44,6 +44,7 @@ const RecommendationView = () => {
         imageLinks={searchResult.imageLinks}
         title={searchResult.title}
         key={searchResult.key}
+        id={searchResult.id}
       />
     )
   })
