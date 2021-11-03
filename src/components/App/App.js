@@ -18,7 +18,6 @@ const App = () => {
           exact
           path="/:searchTerm"
           render={({ match }) => {
-            console.log(match)
             if (match.params.searchTerm !== "recommendations" && match.params.searchTerm !== "details") {
               return <BooksContainer />
             }
@@ -27,20 +26,12 @@ const App = () => {
         <Route
           exact
           path="/recommendations"
-          render={({ match }) => {
-            if (match.params.url === "recommendation") {
-              return <RecommendationView />
-            }
-          }}
+          render={() => <RecommendationView />}
         />
         <Route
           exact
           path="/details/"
-          render={({ match }) => {
-            if (match.params.url === "details") {
-              return <Detail />
-            }
-          }}
+          render={({ match }) => <Detail /> }
         />
       </QueryContextProvider>
     </div>

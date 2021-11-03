@@ -4,7 +4,7 @@
   width: 100%;
   min-height: 100vh;
   border: 2px solid red;
-  background-color: #d9d5d2;
+  background-color: #F1F0F2;
   height: max-content;
 }
 
@@ -33,7 +33,7 @@
   min-height: 80vh;
   width: 60vw;
 
-  background-color: #a69485;
+  background-color: wheat;
   height: max-content;
   border-radius: 25px;
   box-shadow: rgba(72, 64, 64, 0.825) -10px 5px 25px 0px;
