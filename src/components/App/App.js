@@ -28,7 +28,9 @@ const App = () => {
           exact
           path="/recommendations"
           render={({ match }) => {
-            return <RecommendationView />
+            if (match.params.url === "recommendation") {
+              return <RecommendationView />
+            }
           }}
         />
         <Route
