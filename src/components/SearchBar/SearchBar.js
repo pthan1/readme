@@ -11,13 +11,13 @@ const SearchBar = () => {
   const handleSubmit = event => {
     event.preventDefault()
     addBookTitle(book)
-    history.push(`${book}`)
+    history.push(`/search/${book}`)
     setBook("")
   }
 
-  const handleChange = event => {
-    setBook(event.target.value)
-  }
+  // const handleChange = event => {
+  //   setBook(event.target.value)
+  // }
 
   return (
     <div className="search-container">
@@ -26,8 +26,8 @@ const SearchBar = () => {
           className="search-input"
           type="text"
           placeholder="book"
-          value={book}
-          onChange={event => handleChange(event)}
+          // value={book}
+          onChange={event => setBook(event.target.value)}
         />
       </form>
     </div>

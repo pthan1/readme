@@ -16,11 +16,9 @@ const App = () => {
         </Route>
         <Route
           exact
-          path="/:searchTerm"
-          render={({ match }) => {
-            if (match.params.searchTerm !== "recommendations" && match.params.searchTerm !== "details") {
-              return <BooksContainer />
-            }
+          path="/search/:searchTerm"
+          render={() => {
+            return <BooksContainer />
           }}
         />
         <Route exact path="/recommendations" render={() => <RecommendationView />} />
