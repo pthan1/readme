@@ -4,6 +4,7 @@ import BookCard from "../BookCard/BookCard"
 import "./BooksContainer.css"
 import uniqueString from "unique-string"
 import Nav from "../Nav/Nav"
+import { Link } from "react-router-dom"
 
 const BooksContainer = () => {
   const [searchResults, setSearchResults] = useState([])
