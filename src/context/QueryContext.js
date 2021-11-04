@@ -6,6 +6,7 @@ const QueryContextProvider = props => {
   const [bookTitle, setBookTitle] = useState("")
   const [category, setCategory] = useState("")
   const [bookId, setBookId] = useState("")
+  const [overview, setOverview] = useState("")
 
   const addBookTitle = userInput => {
     const processedInput = userInput.split(" ")
@@ -27,12 +28,13 @@ const QueryContextProvider = props => {
     }
   }
 
-  const addBookToFind = id => {
+  const addBookToFind = (id, overview) => {
     setBookId(id)
+    setOverview(overview)
   }
 
   return (
-    <QueryContext.Provider value={{ bookTitle, addBookTitle, category, addCategory, bookId, addBookToFind }}>
+    <QueryContext.Provider value={{ bookTitle, addBookTitle, category, addCategory, bookId, addBookToFind, overview }}>
       {props.children}
     </QueryContext.Provider>
   )
