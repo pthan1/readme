@@ -6,6 +6,7 @@ import { Route } from "react-router-dom"
 import LandingPage from "../LandingPage/LandingPage"
 import RecommendationView from "../RecommendationView/RecommendationView"
 import Detail from "../Detail/Detail"
+import Error from "../Error/Error"
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         />
         <Route exact path="/recommendations" render={() => <RecommendationView />} />
         <Route exact path="/details/" render={() => <Detail />} />
+        <Route exact path="/error" render={() => <Error />} />
       </QueryContextProvider>
     </div>
   )

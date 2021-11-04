@@ -25,8 +25,8 @@ const SearchBar = () => {
         <input
           className="search-input"
           type="text"
-          placeholder="book"
-          // value={book}
+          placeholder="search for a book..."
+          value={book}
           onChange={event => setBook(event.target.value)}
         />
       </form>
