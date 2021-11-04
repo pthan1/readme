@@ -4,10 +4,11 @@ import RecommendationCard from "../RecommendationCard/RecommendationCard"
 import "./RecommendationView.css"
 import uniqueString from "unique-string"
 import Nav from "../Nav/Nav"
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 const RecommendationView = () => {
   const [searchResults, setSearchResults] = useState([])
+  const [error, setError] = useState('')
   const { category, bookTitle } = useContext(QueryContext)
 
   // const book = bookTitle.split('+').join()
@@ -16,9 +17,13 @@ const RecommendationView = () => {
     fetch(
       `https://www.googleapis.com/books/v1/volumes?q=subject:${category}&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
     )
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Status: ${response.status}`)
+        }
+        return response.json()
+      })
       .then(data => {
-        console.log("data in rec view", data)
         const filteredResults = data.items
           .filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title)
           .filter(result => result.volumeInfo.averageRating)
@@ -38,6 +43,10 @@ const RecommendationView = () => {
         })
         setSearchResults(cardInfo)
       })
+      .catch(error => {
+        console.error(error)
+        setError('Something went side ways')
+      })
   }, [category])
 
   const recommendationCards = searchResults.map(searchResult => {
@@ -56,7 +65,7 @@ const RecommendationView = () => {
   })
 
   return (
-    searchResults && (
+    !error && category ? (
       <div className="recommendation-view">
         <Nav />
         <div className="display-body-recommendation">
@@ -64,7 +73,7 @@ const RecommendationView = () => {
           <div className="card-container-recommendation">{recommendationCards}</div>
         </div>
       </div>
-    )
+    ) : <Redirect to='/error' />
   )
 }
 
