@@ -31,6 +31,7 @@ const RecommendationView = () => {
             key: bookKey,
             averageRating: result.volumeInfo.averageRating,
             id: result.id,
+            overview: result.volumeInfo.description,
           }
         })
         setSearchResults(cardInfo)
@@ -45,6 +46,7 @@ const RecommendationView = () => {
         title={searchResult.title}
         key={searchResult.key}
         id={searchResult.id}
+        overview={searchResult.overview}
       />
     )
   })

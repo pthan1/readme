@@ -13,9 +13,12 @@ const BooksContainer = () => {
     fetch(
       `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&maxResults=15&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
     )
-      .then(response => response.json())
+      .then(response => {
+        console.log(response)
+        return response.json()
+      })
       .then(data => {
-        console.log("data from bookcontainer", data)
+        console.log(data)
         const filteredResults = data.items.filter(
           result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title
         )

@@ -3,7 +3,7 @@ import "./BookCard.css"
 import { useHistory } from "react-router-dom"
 import { QueryContext } from "../../context/QueryContext"
 
-const BookCard = ({ imageLinks, title, bookCategory, averageRating, id }) => {
+const BookCard = ({ imageLinks, title, bookCategory, averageRating, id, overview }) => {
   const history = useHistory()
   const { category, addCategory, addBookToFind } = useContext(QueryContext)
 
@@ -12,7 +12,7 @@ const BookCard = ({ imageLinks, title, bookCategory, averageRating, id }) => {
       addCategory(bookCategory)
       history.push(`/recommendations`)
     } else {
-      addBookToFind(id)
+      addBookToFind(id,overview)
       history.push(`/details`)
     }
   }
