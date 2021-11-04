@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from "react"
 import { QueryContext } from "../../context/QueryContext"
-import BookCard from "../BookCard/BookCard"
+import RecommendationCard from "../RecommendationCard/RecommendationCard"
 import "./RecommendationView.css"
 import uniqueString from "unique-string"
 import Nav from "../Nav/Nav"
+import { Link } from "react-router-dom"
 
 const RecommendationView = () => {
   const [searchResults, setSearchResults] = useState([])
@@ -17,6 +18,7 @@ const RecommendationView = () => {
     )
       .then(response => response.json())
       .then(data => {
+        console.log("data in rec view", data)
         const filteredResults = data.items
           .filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title)
           .filter(result => result.volumeInfo.averageRating)
@@ -38,16 +40,18 @@ const RecommendationView = () => {
       })
   }, [category])
 
-  const bookCards = searchResults.map(searchResult => {
+  const recommendationCards = searchResults.map(searchResult => {
     return (
-      <BookCard
-        className={"card"}
-        imageLinks={searchResult.imageLinks}
-        title={searchResult.title}
-        key={searchResult.key}
-        id={searchResult.id}
-        overview={searchResult.overview}
-      />
+      <Link to="/details">
+        <RecommendationCard
+          className={"card"}
+          imageLinks={searchResult.imageLinks}
+          title={searchResult.title}
+          key={searchResult.key}
+          id={searchResult.id}
+          overview={searchResult.overview}
+        />
+      </Link>
     )
   })
 
@@ -57,7 +61,7 @@ const RecommendationView = () => {
         <Nav />
         <div className="display-body-recommendation">
           <p className=".p-prompt-recommendation">Because you liked {bookTitle} you might like these books</p>
-          <div className="card-container-recommendation">{bookCards}</div>
+          <div className="card-container-recommendation">{recommendationCards}</div>
         </div>
       </div>
     )

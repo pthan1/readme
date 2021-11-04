@@ -1,14 +1,14 @@
 import React, { useContext } from "react"
-import "./BookCard.css"
+import "./RecommendationCard.css"
 // import { useHistory } from "react-router-dom"
 import { QueryContext } from "../../context/QueryContext"
 
-const BookCard = ({ imageLinks, title, bookCategory }) => {
+const BookCard = ({ imageLinks, title, id, overview }) => {
   // const history = useHistory()
-  const { addCategory } = useContext(QueryContext)
+  const { addBookToFind } = useContext(QueryContext)
 
   const handleClick = () => {
-    addCategory(bookCategory)
+    addBookToFind(id, overview)
   }
 
   return (

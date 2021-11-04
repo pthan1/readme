@@ -4,6 +4,7 @@ import BookCard from "../BookCard/BookCard"
 import "./BooksContainer.css"
 import uniqueString from "unique-string"
 import Nav from "../Nav/Nav"
+import { Link } from "react-router-dom"
 
 const BooksContainer = () => {
   const [searchResults, setSearchResults] = useState([])
@@ -37,13 +38,15 @@ const BooksContainer = () => {
 
   const bookCards = searchResults.map(searchResult => {
     return (
-      <BookCard
-        className={"card"}
-        imageLinks={searchResult.imageLinks}
-        title={searchResult.title}
-        key={searchResult.key}
-        bookCategory={searchResult.category}
-      />
+      <Link to="/recommendations">
+        <BookCard
+          className={"card"}
+          imageLinks={searchResult.imageLinks}
+          title={searchResult.title}
+          key={searchResult.key}
+          bookCategory={searchResult.category}
+        />
+      </Link>
     )
   })
 
