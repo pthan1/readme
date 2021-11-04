@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   background-color: #d9d5d2;
   height: max-content;
 }
