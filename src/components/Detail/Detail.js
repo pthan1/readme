@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { QueryContext } from "../../context/QueryContext"
 import Nav from "../Nav/Nav"
 import "./Detail.css"
@@ -24,16 +24,16 @@ const Detail = props => {
           // id: result.id,
         })
       })
-  }, [])
+  }, [bookId])
 
   return (
     <div className="detail-view">
       <Nav />
       <div className="overview-display">
         <div className="right-container">
-          <NavLink to="/recommendations">
+          <Link to="/recommendations">
             <img className="go-back-arrow" alt="this is a left arrow" />
-          </NavLink>
+          </Link>
           <img className="detail-cover" alt="large book cover" src={bookInfo.imageLinks} />
         </div>
         <div className="detail-container">

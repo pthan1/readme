@@ -7,7 +7,7 @@ import Nav from "../Nav/Nav"
 
 const BooksContainer = () => {
   const [searchResults, setSearchResults] = useState([])
-  const { bookTitle, addCategory } = useContext(QueryContext)
+  const { bookTitle } = useContext(QueryContext)
 
   useEffect(() => {
     fetch(
@@ -15,18 +15,17 @@ const BooksContainer = () => {
     )
       .then(response => response.json())
       .then(data => {
+        console.log("data from bookcontainer", data)
         const filteredResults = data.items.filter(
           result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title
         )
         const cardInfo = filteredResults.map(result => {
-          if (result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title) {
-            let bookKey = uniqueString()
-            return {
-              category: result.volumeInfo.categories[0],
-              imageLinks: result.volumeInfo.imageLinks.thumbnail,
-              title: result.volumeInfo.title,
-              key: bookKey,
-            }
+          let bookKey = uniqueString()
+          return {
+            category: result.volumeInfo.categories[0],
+            imageLinks: result.volumeInfo.imageLinks.thumbnail,
+            title: result.volumeInfo.title,
+            key: bookKey,
           }
         })
         setSearchResults(cardInfo)
