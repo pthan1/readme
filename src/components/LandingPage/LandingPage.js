@@ -7,8 +7,8 @@ const LandingPage = () => {
   return (
     <section className="landing-body">
       <p className="login-link">Login</p>
-      <img className="logo" src={logo2} />
-      <p className="prompt">Welcome to readME, tell us a book you like and we will help you find your next reading</p>
+      <img className="logo" alt="readme logo" src={logo2} />
+      <p className="prompt">Welcome to readME! Tell us a book you like and we will help you find your next read!</p>
       <SearchBar />
     </section>
   )
