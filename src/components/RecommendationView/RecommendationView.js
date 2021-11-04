@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import { QueryContext } from "../../context/QueryContext"
-import BookCard from "../BookCard/BookCard"
+import RecommendationCard from "../RecommendationCard/RecommendationCard"
 import "./RecommendationView.css"
 import uniqueString from "unique-string"
 import Nav from "../Nav/Nav"
@@ -40,14 +40,16 @@ const RecommendationView = () => {
 
   const bookCards = searchResults.map(searchResult => {
     return (
-      <BookCard
-        className={"card"}
-        imageLinks={searchResult.imageLinks}
-        title={searchResult.title}
-        key={searchResult.key}
-        id={searchResult.id}
-        overview={searchResult.overview}
-      />
+      <Link to="/details">
+        <RecommendationCard
+          className={"card"}
+          imageLinks={searchResult.imageLinks}
+          title={searchResult.title}
+          key={searchResult.key}
+          id={searchResult.id}
+          overview={searchResult.overview}
+        />
+      </Link>
     )
   })
 

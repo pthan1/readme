@@ -37,13 +37,15 @@ const BooksContainer = () => {
 
   const bookCards = searchResults.map(searchResult => {
     return (
-      <BookCard
-        className={"card"}
-        imageLinks={searchResult.imageLinks}
-        title={searchResult.title}
-        key={searchResult.key}
-        bookCategory={searchResult.category}
-      />
+      <Link to="/recommendations">
+        <BookCard
+          className={"card"}
+          imageLinks={searchResult.imageLinks}
+          title={searchResult.title}
+          key={searchResult.key}
+          bookCategory={searchResult.category}
+        />
+      </Link>
     )
   })
 
