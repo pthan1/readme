@@ -1,31 +1,52 @@
 import React, { useState, useEffect, useContext } from "react"
+import { NavLink } from "react-router-dom"
 import { QueryContext } from "../../context/QueryContext"
 import Nav from "../Nav/Nav"
 import "./Detail.css"
 
-const Detail = params => {
+const Detail = props => {
   const [bookInfo, setBookInfo] = useState({})
   const { bookId } = useContext(QueryContext)
 
   useEffect(() => {
     fetch(`https://www.googleapis.com/books/v1/volumes/${bookId}?key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`)
-    .then(response => response.json())
-    .then(data => console.log(data))
-  })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        setBookInfo({
+          author: data.volumeInfo.authors[0],
+          category: data.volumeInfo.categories[0],
+          imageLinks: data.volumeInfo.imageLinks.medium,
+          title: data.volumeInfo.title,
+          rating: data.volumeInfo.averageRating,
+          overview: data.volumeInfo.description,
+          // key: bookKey,
+          // id: result.id,
+        })
+      })
+  }, [])
 
   return (
     <div className="detail-view">
       <Nav />
-      <img className="go-back-arrow" alt="this is a left arrow" />
-      <div className="detail-container">
-        <img className="detail-cover" alt="large book cover" />
-        <div className="detail-info">
-          <p className="detail-title"></p>
-          <p className="detail-overview"></p>
-          <p className="detail-author">Author: </p>
-          <p className="detail-rating">Rating:</p>
-          <p className="buying-links">Links</p>
-          <button className="add-readlist-btn">Add to reading list</button>
+      <div className="overview-display">
+        <div className="right-container">
+          <NavLink to="/recommendations">
+            <img className="go-back-arrow" alt="this is a left arrow" />
+          </NavLink>
+          <img className="detail-cover" alt="large book cover" src={bookInfo.imageLinks} />
+        </div>
+        <div className="detail-container">
+          <divdiv className="detail-info">
+            <p className="detail-title">{bookInfo.title}</p>
+            <div className="overview-container">
+              <p className="detail-overview">{bookInfo.overview}</p>
+            </div>
+            <p className="detail-author">Author: {bookInfo.author} </p>
+            <p className="detail-rating">Rating:{bookInfo.rating}</p>
+            <p className="buying-links">Links</p>
+            <button className="add-readlist-btn">Add to reading list</button>
+          </divdiv>
         </div>
       </div>
     </div>

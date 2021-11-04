@@ -23,16 +23,8 @@ const App = () => {
             }
           }}
         />
-        <Route
-          exact
-          path="/recommendations"
-          render={() => <RecommendationView />}
-        />
-        <Route
-          exact
-          path="/details/"
-          render={({ match }) => <Detail /> }
-        />
+        <Route exact path="/recommendations" render={() => <RecommendationView />} />
+        <Route exact path="/details/" render={() => <Detail />} />
       </QueryContextProvider>
     </div>
   )

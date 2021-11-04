@@ -6,7 +6,6 @@ const QueryContextProvider = props => {
   const [bookTitle, setBookTitle] = useState("")
   const [category, setCategory] = useState("")
   const [bookId, setBookId] = useState("")
-  const [bookInfo, setBookInfo] = useState({})
 
   const addBookTitle = userInput => {
     const processedInput = userInput.split(" ")
@@ -33,9 +32,7 @@ const QueryContextProvider = props => {
   }
 
   return (
-    <QueryContext.Provider
-      value={{ bookTitle, addBookTitle, category, addCategory, bookId, addBookToFind, bookInfo, setBookInfo }}
-    >
+    <QueryContext.Provider value={{ bookTitle, addBookTitle, category, addCategory, bookId, addBookToFind }}>
       {props.children}
     </QueryContext.Provider>
   )

@@ -54,7 +54,7 @@ const RecommendationView = () => {
       <div className="recommendation-view">
         <Nav />
         <div className="display-body-recommendation">
-          <p className=".p-prompt-recommendation">Because you liked {bookTitle} you might like this books</p>
+          <p className=".p-prompt-recommendation">Because you liked {bookTitle} you might like these books</p>
           <div className="card-container-recommendation">{bookCards}</div>
         </div>
       </div>
