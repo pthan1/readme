@@ -6,7 +6,7 @@ export default function User() {
   const { user, isLoggedin, toggleLogin } = useContext(AuthContext)
   return isLoggedin ? (
     <div>
-      <span>Hello, {user.name}</span>
+      <span>Hello, {user.name} </span>
       <span onClick={toggleLogin}>Log out</span>
     </div>
   ) : (
