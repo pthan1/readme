@@ -5,24 +5,15 @@ import "./RecommendationView.css"
 import uniqueString from "unique-string"
 import Nav from "../Nav/Nav"
 import { Link, Redirect } from "react-router-dom"
+import { getRecommendations } from "../../apiCalls"
 
 const RecommendationView = () => {
   const [searchResults, setSearchResults] = useState([])
   const [error, setError] = useState('')
   const { category, bookTitle } = useContext(QueryContext)
 
-  // const book = bookTitle.split('+').join()
-
   useEffect(() => {
-    fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=subject:${category}&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
-    )
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Status: ${response.status}`)
-        }
-        return response.json()
-      })
+    getRecommendations(category)
       .then(data => {
         const filteredResults = data.items
           .filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title)
@@ -69,8 +60,9 @@ const RecommendationView = () => {
       <div className="recommendation-view">
         <Nav />
         <div className="display-body-recommendation">
-          <p className=".p-prompt-recommendation">Because you liked {bookTitle} you might like these books</p>
-          <div className="card-container-recommendation">{recommendationCards}</div>
+          <p className="p-prompt-recommendation">Because you liked {bookTitle} you might like these books</p>
+          {searchResults ? <div className="card-container-recommendation">{recommendationCards}</div> :
+          <div className="card-container-recommendation"><h2>We couldn't find good readings with that book, try again with another book :)</h2></div>}
         </div>
       </div>
     ) : <Redirect to='/error' />
