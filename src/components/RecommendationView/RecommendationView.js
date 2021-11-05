@@ -5,24 +5,15 @@ import "./RecommendationView.css"
 import uniqueString from "unique-string"
 import Nav from "../Nav/Nav"
 import { Link, Redirect } from "react-router-dom"
+import { getRecommendations } from "../../apiCalls"
 
 const RecommendationView = () => {
   const [searchResults, setSearchResults] = useState([])
   const [error, setError] = useState('')
   const { category, bookTitle } = useContext(QueryContext)
 
-  // const book = bookTitle.split('+').join()
-
   useEffect(() => {
-    fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=subject:${category}&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
-    )
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Status: ${response.status}`)
-        }
-        return response.json()
-      })
+    getRecommendations(category)
       .then(data => {
         const filteredResults = data.items
           .filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title)

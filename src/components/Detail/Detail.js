@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import { Link, Redirect } from "react-router-dom"
+import { getSingleBook } from "../../apiCalls"
 import { QueryContext } from "../../context/QueryContext"
 import Nav from "../Nav/Nav"
 import "./Detail.css"
@@ -10,13 +11,7 @@ const Detail = props => {
   const { bookId, overview } = useContext(QueryContext)
 
   useEffect(() => {
-    fetch(`https://www.googleapis.com/books/v1/volumes/${bookId}?key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Status: ${response.status}`)
-        }
-        return response.json()
-      })
+    getSingleBook(bookId)
       .then(data => {
         setBookInfo({
           author: data.volumeInfo.authors[0],
