@@ -61,7 +61,8 @@ const RecommendationView = () => {
         <Nav />
         <div className="display-body-recommendation">
           <p className="p-prompt-recommendation">Because you liked {bookTitle} you might like these books</p>
-          <div className="card-container-recommendation">{recommendationCards}</div>
+          {searchResults ? <div className="card-container-recommendation">{recommendationCards}</div> :
+          <div className="card-container-recommendation"><h2>We couldn't find good readings with that book, try again with another book :)</h2></div>}
         </div>
       </div>
     ) : <Redirect to='/error' />

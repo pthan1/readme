@@ -4,6 +4,7 @@ import { getSingleBook } from "../../apiCalls"
 import { QueryContext } from "../../context/QueryContext"
 import Nav from "../Nav/Nav"
 import "./Detail.css"
+import arrow from '../../arrow.svg'
 
 const Detail = props => {
   const [bookInfo, setBookInfo] = useState({})
@@ -34,9 +35,10 @@ const Detail = props => {
       <div className="overview-display">
         <div className="right-container">
           <Link to="/recommendations">
-            <img className="go-back-arrow" alt="this is a left arrow" />
+            <img className="go-back-arrow" alt="this is a left arrow" src={arrow} />
           </Link>
-          <img className="detail-cover" alt="large book cover" src={bookInfo.imageLinks} />
+          {bookInfo.imageLinks ? <img className="detail-cover" alt="large book cover" src={bookInfo.imageLinks} /> : 
+          <h2>We don't have a cover for this book but it is a good one :)</h2>}
         </div>
         <div className="detail-container">
           <div className="detail-info">
