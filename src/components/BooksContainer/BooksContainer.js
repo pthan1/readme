@@ -5,6 +5,7 @@ import "./BooksContainer.css"
 import uniqueString from "unique-string"
 import Nav from "../Nav/Nav"
 import { Link, Redirect } from "react-router-dom"
+import { getBooksTitle } from "../../apiCalls"
 
 const BooksContainer = () => {
   const [searchResults, setSearchResults] = useState([])
@@ -12,15 +13,7 @@ const BooksContainer = () => {
   const { bookTitle } = useContext(QueryContext)
 
   useEffect(() => {
-    fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&maxResults=15&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`
-    )
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Status: ${response.status}`)
-        }
-        return response.json()
-      })
+    getBooksTitle(bookTitle)
       .then(data => {
         const filteredResults = data.items.filter(
           result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title
@@ -46,7 +39,7 @@ const BooksContainer = () => {
     return (
       <Link to="/recommendations">
         <BookCard
-          className={"card"}
+          // className={"card"}
           imageLinks={searchResult.imageLinks}
           title={searchResult.title}
           key={searchResult.key}

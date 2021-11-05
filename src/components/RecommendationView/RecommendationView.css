@@ -3,8 +3,7 @@
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  border: 2px solid red;
-  background-color: #F1F0F2;
+  background-color: #f1f0f2;
   height: max-content;
   font-family: 'PlayfairDisplay';
 
@@ -20,9 +19,15 @@
 .p-prompt-recommendation {
   width: 200px;
   text-align: center;
+<<<<<<< HEAD
   padding-top: 30px;
   font-size: 20px;
  font-family: 'PlayfairDisplay';
+=======
+  padding-top: 90px;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+>>>>>>> eab966d9d0885629a76f7bd641482de0c97670d7
 }
 
 .card-container-recommendation {
@@ -32,11 +37,12 @@
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
-  min-height: 80vh;
-  width: 60vw;
-
+  min-height: 800px;
+  max-height: 900px;
+  width: 55vw;
+  min-width: 600px;
+  opacity: 0.7;
   background-color: wheat;
-  height: max-content;
   border-radius: 25px;
   box-shadow: rgba(72, 64, 64, 0.825) -10px 5px 25px 0px;
   padding: 30px;
