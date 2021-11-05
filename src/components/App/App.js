@@ -6,23 +6,31 @@ import { Route } from "react-router-dom"
 import LandingPage from "../LandingPage/LandingPage"
 import RecommendationView from "../RecommendationView/RecommendationView"
 import Detail from "../Detail/Detail"
+import Login from "../LogIn/LogIn"
+import AuthContextProvider from "../../context/AuthContext"
 
 const App = () => {
   return (
     <div className="App">
       <QueryContextProvider>
-        <Route exact path="/">
-          <LandingPage />
-        </Route>
-        <Route
-          exact
-          path="/search/:searchTerm"
-          render={() => {
-            return <BooksContainer />
-          }}
-        />
-        <Route exact path="/recommendations" render={() => <RecommendationView />} />
-        <Route exact path="/details/" render={() => <Detail />} />
+        <AuthContextProvider>
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+
+          <Route
+            exact
+            path="/search/:searchTerm"
+            render={() => {
+              return <BooksContainer />
+            }}
+          />
+          <Route exact path="/recommendations" render={() => <RecommendationView />} />
+          <Route exact path="/details/" render={() => <Detail />} />
+        </AuthContextProvider>
       </QueryContextProvider>
     </div>
   )

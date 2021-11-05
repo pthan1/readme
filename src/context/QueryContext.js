@@ -7,6 +7,7 @@ const QueryContextProvider = props => {
   const [category, setCategory] = useState("")
   const [bookId, setBookId] = useState("")
   const [overview, setOverview] = useState("")
+  const [isLoggedin, setIsLoggedin] = useState(false)
 
   const addBookTitle = userInput => {
     const processedInput = userInput.split(" ")
@@ -33,8 +34,24 @@ const QueryContextProvider = props => {
     setOverview(overview)
   }
 
+  const toggleLogin = () => {
+    setIsLoggedin(!isLoggedin)
+  }
+
   return (
-    <QueryContext.Provider value={{ bookTitle, addBookTitle, category, addCategory, bookId, addBookToFind, overview }}>
+    <QueryContext.Provider
+      value={{
+        bookTitle,
+        addBookTitle,
+        category,
+        addCategory,
+        bookId,
+        addBookToFind,
+        overview,
+        isLoggedin,
+        toggleLogin,
+      }}
+    >
       {props.children}
     </QueryContext.Provider>
   )
