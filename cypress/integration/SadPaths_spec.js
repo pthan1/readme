@@ -35,4 +35,16 @@ describe('Sad paths', () => {
     cy.reload()
     .get('.prompt').contains('We are sorry, something went wrong, please try searching again...');
     })
+
+    it('Should show an error if a book doesn\'t have a cover', () => {
+    cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=subject:Fiction&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book2'})
+    .get('.book-card').first()
+    .click()
+
+    cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes/9fyxDgAAQBAJ?key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'singleBookNoCover'})
+    .get('.book-card').first()
+    .click();
+
+    cy.get('.right-container').contains('We don\'t have a cover for this book but it is a good one :)');
+    })
 })
