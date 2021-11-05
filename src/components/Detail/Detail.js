@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useContext } from "react"
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
+import { getSingleBook } from "../../apiCalls"
 import { QueryContext } from "../../context/QueryContext"
 import Nav from "../Nav/Nav"
 import "./Detail.css"
+import arrow from '../../arrow.svg'
 
 const Detail = props => {
   const [bookInfo, setBookInfo] = useState({})
+  const [error, setError] = useState('')
   const { bookId, overview } = useContext(QueryContext)
 
   useEffect(() => {
-    fetch(`https://www.googleapis.com/books/v1/volumes/${bookId}?key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w`)
-      .then(response => response.json())
+    getSingleBook(bookId)
       .then(data => {
         setBookInfo({
           author: data.volumeInfo.authors[0],
@@ -18,25 +20,28 @@ const Detail = props => {
           imageLinks: data.volumeInfo.imageLinks.medium,
           title: data.volumeInfo.title,
           rating: data.volumeInfo.averageRating,
-          // overview: data.volumeInfo.description,
-          // key: bookKey,
-          // id: result.id,
         })
+      })
+      .catch(error => {
+        console.error(error)
+        setError('Something went side ways')
       })
   }, [bookId])
 
   return (
+    !error && bookId ? (
     <div className="detail-view">
       <Nav />
       <div className="overview-display">
         <div className="right-container">
           <Link to="/recommendations">
-            <img className="go-back-arrow" alt="this is a left arrow" />
+            <img className="go-back-arrow" alt="this is a left arrow" src={arrow} />
           </Link>
-          <img className="detail-cover" alt="large book cover" src={bookInfo.imageLinks} />
+          {bookInfo.imageLinks ? <img className="detail-cover" alt="large book cover" src={bookInfo.imageLinks} /> : 
+          <h2>We don't have a cover for this book but it is a good one :)</h2>}
         </div>
         <div className="detail-container">
-          <divdiv className="detail-info">
+          <div className="detail-info">
             <p className="detail-title">{bookInfo.title}</p>
             <div className="overview-container">
               <p className="detail-overview">{overview}</p>
@@ -45,10 +50,11 @@ const Detail = props => {
             <p className="detail-rating">Rating:{bookInfo.rating}</p>
             <p className="buying-links">Links</p>
             <button className="add-readlist-btn">Add to reading list</button>
-          </divdiv>
+          </div>
         </div>
       </div>
     </div>
+  ) : <Redirect to="/error" />
   )
 }
 

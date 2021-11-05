@@ -8,6 +8,7 @@ import RecommendationView from "../RecommendationView/RecommendationView"
 import Detail from "../Detail/Detail"
 import Login from "../LogIn/LogIn"
 import AuthContextProvider from "../../context/AuthContext"
+import Error from "../Error/Error"
 
 const App = () => {
   return (
@@ -30,7 +31,21 @@ const App = () => {
           />
           <Route exact path="/recommendations" render={() => <RecommendationView />} />
           <Route exact path="/details/" render={() => <Detail />} />
+          <Route exact path="/error" render={() => <Error />} />
         </AuthContextProvider>
+        {/* <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route
+          exact
+          path="/search/:searchTerm"
+          render={() => {
+            return <BooksContainer />
+          }}
+        />
+        <Route exact path="/recommendations" render={() => <RecommendationView />} />
+        <Route exact path="/details/" render={() => <Detail />} />
+        <Route exact path="/error" render={() => <Error />} /> */}
       </QueryContextProvider>
     </div>
   )
