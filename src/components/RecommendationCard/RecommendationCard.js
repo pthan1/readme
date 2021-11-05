@@ -3,7 +3,7 @@ import "./RecommendationCard.css"
 // import { useHistory } from "react-router-dom"
 import { QueryContext } from "../../context/QueryContext"
 
-const BookCard = ({ imageLinks, title, id, overview }) => {
+const RecommendationCard = ({ imageLinks, title, id, overview }) => {
   // const history = useHistory()
   const { addBookToFind } = useContext(QueryContext)
 
@@ -19,4 +19,4 @@ const BookCard = ({ imageLinks, title, id, overview }) => {
   )
 }
 
-export default BookCard
+export default RecommendationCard

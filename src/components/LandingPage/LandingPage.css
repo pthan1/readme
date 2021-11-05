@@ -13,7 +13,7 @@
   box-shadow: rgba(72, 64, 64, 0.825) -10px 5px 25px 0px;
 }
 
-.login-link {
+a {
   margin-top: 2rem;
   align-self: flex-end;
   padding-right: 2rem;

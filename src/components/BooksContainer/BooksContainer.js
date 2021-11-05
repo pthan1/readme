@@ -39,7 +39,7 @@ const BooksContainer = () => {
     return (
       <Link to="/recommendations">
         <BookCard
-          className={"card"}
+          // className={"card"}
           imageLinks={searchResult.imageLinks}
           title={searchResult.title}
           key={searchResult.key}
