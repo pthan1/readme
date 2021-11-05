@@ -5,7 +5,7 @@ import "./BooksContainer.css"
 import uniqueString from "unique-string"
 import Nav from "../Nav/Nav"
 import { Link, Redirect } from "react-router-dom"
-import { getBooksTittle } from "../../apiCalls"
+import { getBooksTitle } from "../../apiCalls"
 
 const BooksContainer = () => {
   const [searchResults, setSearchResults] = useState([])
@@ -13,7 +13,7 @@ const BooksContainer = () => {
   const { bookTitle } = useContext(QueryContext)
 
   useEffect(() => {
-    getBooksTittle(bookTitle)
+    getBooksTitle(bookTitle)
       .then(data => {
         const filteredResults = data.items.filter(
           result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title
