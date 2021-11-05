@@ -53,8 +53,27 @@ cy.get('.prompt').contains('Welcome to readME!')
     .click();
 
     cy.get('.detail-title').contains('Slightly South of Simple');
-
   })
 
+  it('Should be able to get return to the book recommendations view from the book details page', () => {
+    cy.get('input[type="text"]')
+    .type('Dune');
+
+    cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=Dune&maxResults=15&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book1'})
+    .get('.search-form').submit();
+
+    cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=subject:Fiction&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book2'})
+    .get('.book-card').first()
+    .click()
+
+    cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes/9fyxDgAAQBAJ?key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'singleBook'})
+    .get('.book-card').first()
+    .click();
+
+    cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=subject:Fiction&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book2'}).get('.go-back-arrow').click();
+
+    cy.get('.book-card')
+    .contains('Slightly South of Simple')
 })
 
+})
