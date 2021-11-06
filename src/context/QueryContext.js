@@ -15,6 +15,14 @@ const QueryContextProvider = props => {
     category: '',
     bookId: '',
     overview: '',
+  }, () => {
+    const localData = localStorage.getItem('query')
+    return localData ? JSON.parse(localData) : {
+      bookTitle: '',
+      category: '',
+      bookId: '',
+      overview: '',
+    }
   })
   
   useEffect(() => {
