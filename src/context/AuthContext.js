@@ -14,6 +14,18 @@ const AuthContextProvider = props => {
     setUser(user)
   }
 
+  const setBookToReadingList = (book) => {
+    //check if a user is Logged in
+      //if so, do a PATCH
+    //if not
+      // set a book to a state variable? 
+    
+  }
+
+  const deleteBookFromReadinList = (id) => {
+    //delete request 
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -21,6 +33,8 @@ const AuthContextProvider = props => {
         toggleLogin,
         user,
         grabUser,
+        setBookToReadingList,
+        deleteBookFromReadingList
       }}
     >
       {props.children}
