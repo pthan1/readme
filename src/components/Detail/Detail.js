@@ -5,11 +5,13 @@ import { QueryContext } from "../../context/QueryContext"
 import Nav from "../Nav/Nav"
 import "./Detail.css"
 import arrow from '../../arrow.svg'
+import { AuthContext } from "../../context/AuthContext"
 
 const Detail = props => {
   const [bookInfo, setBookInfo] = useState({})
   const [error, setError] = useState('')
   const { bookId, overview } = useContext(QueryContext)
+  const { user, setBookToReadingList } = useContext(AuthContext);
 
   useEffect(() => {
     getSingleBook(bookId)
@@ -23,7 +25,6 @@ const Detail = props => {
         })
       })
       .catch(error => {
-        console.error(error)
         setError('Something went side ways')
       })
   }, [bookId])
@@ -49,7 +50,10 @@ const Detail = props => {
             <p className="detail-author">Author: {bookInfo.author} </p>
             <p className="detail-rating">Rating:{bookInfo.rating}</p>
             <p className="buying-links">Links</p>
-            <button className="add-readlist-btn">Add to reading list</button>
+            
+            <button className="add-readlist-btn" onClick={() => { setBookToReadingList(bookInfo)
+              // if a user is logged in, run handler function to post the book
+            }}>Add to reading list</button>
           </div>
         </div>
       </div>
