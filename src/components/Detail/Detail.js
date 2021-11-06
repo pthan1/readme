@@ -10,11 +10,11 @@ import { AuthContext } from "../../context/AuthContext"
 const Detail = props => {
   const [bookInfo, setBookInfo] = useState({})
   const [error, setError] = useState('')
-  const { bookId, overview } = useContext(QueryContext)
   const { user, setBookToReadingList } = useContext(AuthContext);
+  const { query } = useContext(QueryContext)
 
   useEffect(() => {
-    getSingleBook(bookId)
+    getSingleBook(query.bookId)
       .then(data => {
         setBookInfo({
           author: data.volumeInfo.authors[0],
@@ -27,10 +27,10 @@ const Detail = props => {
       .catch(error => {
         setError('Something went side ways')
       })
-  }, [bookId])
+  }, [query.bookId])
 
   return (
-    !error && bookId ? (
+    !error && query.bookId ? (
     <div className="detail-view">
       <Nav />
       <div className="overview-display">
@@ -45,7 +45,7 @@ const Detail = props => {
           <div className="detail-info">
             <p className="detail-title">{bookInfo.title}</p>
             <div className="overview-container">
-              <p className="detail-overview">{overview}</p>
+              <p className="detail-overview">{query.overview}</p>
             </div>
             <p className="detail-author">Author: {bookInfo.author} </p>
             <p className="detail-rating">Rating:{bookInfo.rating}</p>

@@ -9,11 +9,11 @@ import { getRecommendations } from "../../apiCalls"
 
 const RecommendationView = () => {
   const [searchResults, setSearchResults] = useState([])
-  const [error, setError] = useState('')
-  const { category, bookTitle } = useContext(QueryContext)
+  const [error, setError] = useState("")
+  const { query } = useContext(QueryContext)
 
   useEffect(() => {
-    getRecommendations(category)
+    getRecommendations(query.category)
       .then(data => {
         const filteredResults = data.items
           .filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title)
@@ -36,9 +36,9 @@ const RecommendationView = () => {
       })
       .catch(error => {
         console.error(error)
-        setError('Something went side ways')
+        setError("Something went side ways")
       })
-  }, [category])
+  }, [query.category])
 
   const recommendationCards = searchResults.map(searchResult => {
     return (
@@ -55,17 +55,24 @@ const RecommendationView = () => {
     )
   })
 
-  return (
-    !error && category ? (
-      <div className="recommendation-view">
-        <Nav />
-        <div className="display-body-recommendation">
-          <p className="p-prompt-recommendation">Because you liked {bookTitle} you might like these books</p>
-          {searchResults ? <div className="card-container-recommendation">{recommendationCards}</div> :
-          <div className="card-container-recommendation"><h2>We couldn't find good readings with that book, try again with another book :)</h2></div>}
-        </div>
+  return !error && query.category ? (
+    <div className="recommendation-view">
+      <Nav />
+      <div className="display-body-recommendation">
+        <p className="p-prompt-recommendation">
+          Because you liked <b>{query.clickedTitle} </b>you might like these books
+        </p>
+        {searchResults ? (
+          <div className="card-container-recommendation">{recommendationCards}</div>
+        ) : (
+          <div className="card-container-recommendation">
+            <h2>We couldn't find good readings with that book, try again with another book :)</h2>
+          </div>
+        )}
       </div>
-    ) : <Redirect to='/error' />
+    </div>
+  ) : (
+    <Redirect to="/error" />
   )
 }
 

@@ -3,10 +3,11 @@ import "./BookCard.css"
 import { QueryContext } from "../../context/QueryContext"
 
 const BookCard = ({ imageLinks, title, bookCategory }) => {
-  const { addCategory } = useContext(QueryContext)
+  const { dispatch } = useContext(QueryContext)
 
   const handleClick = () => {
-    addCategory(bookCategory)
+    dispatch({ type: "ADD_CATEGORY", category: bookCategory })
+    dispatch({ type: "ASSIGN_TITLE", clickedTitle: title })
   }
 
   return (

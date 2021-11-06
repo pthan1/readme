@@ -1,14 +1,13 @@
 import React, { useContext } from "react"
 import "./RecommendationCard.css"
-// import { useHistory } from "react-router-dom"
 import { QueryContext } from "../../context/QueryContext"
 
 const RecommendationCard = ({ imageLinks, title, id, overview }) => {
-  // const history = useHistory()
-  const { addBookToFind } = useContext(QueryContext)
+  const { dispatch } = useContext(QueryContext)
 
   const handleClick = () => {
-    addBookToFind(id, overview)
+    dispatch( { type:'ADD_BOOK_ID', bookId: id } )
+    dispatch( { type: 'ADD_OVERVIEW', overview: overview } )
   }
 
   return (

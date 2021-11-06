@@ -10,10 +10,10 @@ import { getBooksTitle } from "../../apiCalls"
 const BooksContainer = () => {
   const [searchResults, setSearchResults] = useState([])
   const [error, setError] = useState('')
-  const { bookTitle } = useContext(QueryContext)
+  const { query } = useContext(QueryContext)
 
   useEffect(() => {
-    getBooksTitle(bookTitle)
+    getBooksTitle(query.bookTitle)
       .then(data => {
         const filteredResults = data.items.filter(
           result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title
@@ -33,7 +33,7 @@ const BooksContainer = () => {
           console.error(error)
           setError('Something went side ways')
         })
-  }, [bookTitle])
+  }, [query.bookTitle])
 
   const bookCards = searchResults.map(searchResult => {
     return (
