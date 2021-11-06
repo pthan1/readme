@@ -9,7 +9,7 @@ import { getRecommendations } from "../../apiCalls"
 
 const RecommendationView = () => {
   const [searchResults, setSearchResults] = useState([])
-  const [error, setError] = useState('')
+  const [error, setError] = useState("")
   const { query } = useContext(QueryContext)
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const RecommendationView = () => {
       })
       .catch(error => {
         console.error(error)
-        setError('Something went side ways')
+        setError("Something went side ways")
       })
   }, [query.category])
 
@@ -55,17 +55,24 @@ const RecommendationView = () => {
     )
   })
 
-  return (
-    !error && query.category ? (
-      <div className="recommendation-view">
-        <Nav />
-        <div className="display-body-recommendation">
-          <p className="p-prompt-recommendation">Because you liked {query.bookTitle} you might like these books</p>
-          {searchResults ? <div className="card-container-recommendation">{recommendationCards}</div> :
-          <div className="card-container-recommendation"><h2>We couldn't find good readings with that book, try again with another book :)</h2></div>}
-        </div>
+  return !error && query.category ? (
+    <div className="recommendation-view">
+      <Nav />
+      <div className="display-body-recommendation">
+        <p className="p-prompt-recommendation">
+          Because you liked <b>{query.clickedTitle} </b>you might like these books
+        </p>
+        {searchResults ? (
+          <div className="card-container-recommendation">{recommendationCards}</div>
+        ) : (
+          <div className="card-container-recommendation">
+            <h2>We couldn't find good readings with that book, try again with another book :)</h2>
+          </div>
+        )}
       </div>
-    ) : <Redirect to='/error' />
+    </div>
+  ) : (
+    <Redirect to="/error" />
   )
 }
 

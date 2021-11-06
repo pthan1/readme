@@ -6,7 +6,8 @@ const BookCard = ({ imageLinks, title, bookCategory }) => {
   const { dispatch } = useContext(QueryContext)
 
   const handleClick = () => {
-    dispatch({type: 'ADD_CATEGORY', category: bookCategory})
+    dispatch({ type: "ADD_CATEGORY", category: bookCategory })
+    dispatch({ type: "ASSIGN_TITLE", clickedTitle: title })
   }
 
   return (
