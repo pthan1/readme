@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react"
+import { patchBookToReadingList } from "..//apiCalls"
 
 export const AuthContext = createContext()
 
@@ -15,16 +16,14 @@ const AuthContextProvider = props => {
   }
 
   const setBookToReadingList = (book) => {
-    //check if a user is Logged in
-      //if so, do a PATCH
-    //if not
-      // set a book to a state variable? 
-    
+    const usersReadingList = user.readingList;
+    usersReadingList.push(book);
+    patchBookToReadingList(usersReadingList, user.Id);
   }
 
-  const deleteBookFromReadinList = (id) => {
-    //delete request 
-  }
+  // const deleteBookFromReadinList = (id) => {
+  //   //delete request 
+  // }
 
   return (
     <AuthContext.Provider
@@ -34,7 +33,7 @@ const AuthContextProvider = props => {
         user,
         grabUser,
         setBookToReadingList,
-        deleteBookFromReadingList
+        // deleteBookFromReadingList
       }}
     >
       {props.children}

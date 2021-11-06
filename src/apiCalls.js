@@ -30,4 +30,21 @@ const getSingleBook = (bookId) => {
   })
 }
 
-export { getBooksTitle, getRecommendations, getSingleBook }
+const patchBookToReadingList = (newReadingList, userId) => {
+  return fetch(`http://localhost:5000/api/v1/users/${userId}`, {
+				method: 'PATCH',
+				body: JSON.stringify({newReadingList}),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+				.then((response) => response.json())
+				.then((data) => console.log(data));
+}
+//PATCH function to add a book to a user's reading list
+// pathes the book object onto the user object found in app.locals
+
+//DELETE functiont o delete a book from a user's reading list
+//  
+
+export { getBooksTitle, getRecommendations, getSingleBook, patchBookToReadingList }
