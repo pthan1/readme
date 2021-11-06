@@ -4,8 +4,6 @@ import { queryReducer } from "../reducers/QueryReducer"
 export const QueryContext = createContext()
 
 const QueryContextProvider = props => {
-  const [isLoggedin, setIsLoggedin] = useState(false)
-
   const [query, dispatch] = useReducer(
     queryReducer,
     {
@@ -33,16 +31,11 @@ const QueryContextProvider = props => {
     localStorage.setItem("query", JSON.stringify(query))
   }, [query])
 
-  const toggleLogin = () => {
-    setIsLoggedin(!isLoggedin)
-  }
-
   return (
     <QueryContext.Provider
       value={{
         query,
         dispatch,
-        toggleLogin,
       }}
     >
       {props.children}
