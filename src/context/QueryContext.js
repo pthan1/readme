@@ -4,8 +4,6 @@ import { queryReducer } from "../reducers/QueryReducer"
 export const QueryContext = createContext()
 
 const QueryContextProvider = props => {
-  // const [bookId, setBookId] = useState("")
-  // const [overview, setOverview] = useState("")
   const [isLoggedin, setIsLoggedin] = useState(false)
 
   const [query, dispatch] = useReducer(queryReducer, {
@@ -26,11 +24,6 @@ const QueryContextProvider = props => {
   useEffect(() => {
     localStorage.setItem('query', JSON.stringify(query))
   }, [query])
-
-  // const addBookToFind = (id, overview) => {
-  //   setBookId(id)
-  //   setOverview(overview)
-  // }
 
   const toggleLogin = () => {
     setIsLoggedin(!isLoggedin)
