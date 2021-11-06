@@ -6,23 +6,31 @@ export const QueryContext = createContext()
 const QueryContextProvider = props => {
   const [isLoggedin, setIsLoggedin] = useState(false)
 
-  const [query, dispatch] = useReducer(queryReducer, {
-    bookTitle: '',
-    category: '',
-    bookId: '',
-    overview: '',
-  }, () => {
-    const localData = localStorage.getItem('query')
-    return localData ? JSON.parse(localData) : {
-      bookTitle: '',
-      category: '',
-      bookId: '',
-      overview: '',
+  const [query, dispatch] = useReducer(
+    queryReducer,
+    {
+      bookTitle: "",
+      category: "",
+      bookId: "",
+      overview: "",
+      clickedTitle: "",
+    },
+    () => {
+      const localData = localStorage.getItem("query")
+      return localData
+        ? JSON.parse(localData)
+        : {
+            bookTitle: "",
+            category: "",
+            bookId: "",
+            overview: "",
+            clickedTitle: "",
+          }
     }
-  })
-  
+  )
+
   useEffect(() => {
-    localStorage.setItem('query', JSON.stringify(query))
+    localStorage.setItem("query", JSON.stringify(query))
   }, [query])
 
   const toggleLogin = () => {
@@ -34,7 +42,7 @@ const QueryContextProvider = props => {
       value={{
         query,
         dispatch,
-        toggleLogin
+        toggleLogin,
       }}
     >
       {props.children}
