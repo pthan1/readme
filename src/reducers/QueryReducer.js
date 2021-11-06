@@ -5,7 +5,7 @@ export const queryReducer = (state, action) => {
     if (processedInput.length === 1) {
       return {
         ...state,
-        bookTitle: processedInput,
+        bookTitle: action.bookTitle,
       }
     } else {
       const multipleQuery = processedInput.join("+")

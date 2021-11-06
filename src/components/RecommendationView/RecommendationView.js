@@ -10,10 +10,10 @@ import { getRecommendations } from "../../apiCalls"
 const RecommendationView = () => {
   const [searchResults, setSearchResults] = useState([])
   const [error, setError] = useState('')
-  const { category, bookTitle } = useContext(QueryContext)
+  const { query } = useContext(QueryContext)
 
   useEffect(() => {
-    getRecommendations(category)
+    getRecommendations(query.category)
       .then(data => {
         const filteredResults = data.items
           .filter(result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title)
@@ -38,7 +38,7 @@ const RecommendationView = () => {
         console.error(error)
         setError('Something went side ways')
       })
-  }, [category])
+  }, [query.category])
 
   const recommendationCards = searchResults.map(searchResult => {
     return (
@@ -56,11 +56,11 @@ const RecommendationView = () => {
   })
 
   return (
-    !error && category ? (
+    !error && query.category ? (
       <div className="recommendation-view">
         <Nav />
         <div className="display-body-recommendation">
-          <p className="p-prompt-recommendation">Because you liked {bookTitle} you might like these books</p>
+          <p className="p-prompt-recommendation">Because you liked {query.bookTitle} you might like these books</p>
           {searchResults ? <div className="card-container-recommendation">{recommendationCards}</div> :
           <div className="card-container-recommendation"><h2>We couldn't find good readings with that book, try again with another book :)</h2></div>}
         </div>

@@ -5,20 +5,15 @@ import { useHistory } from "react-router-dom"
 
 const SearchBar = () => {
   const [book, setBook] = useState("")
-  const { dispatch, addBookTitle } = useContext(QueryContext)
+  const { dispatch } = useContext(QueryContext)
   const history = useHistory()
 
   const handleSubmit = event => {
     event.preventDefault()
     dispatch({type: 'ADD_BOOK_TITLE', bookTitle: book})
-    addBookTitle(book)
     history.push(`/search/${book}`)
     setBook("")
   }
-
-  // const handleChange = event => {
-  //   setBook(event.target.value)
-  // }
 
   return (
     <div className="search-container">
