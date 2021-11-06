@@ -5,9 +5,11 @@ import { QueryContext } from "../../context/QueryContext"
 
 const RecommendationCard = ({ imageLinks, title, id, overview }) => {
   // const history = useHistory()
-  const { addBookToFind } = useContext(QueryContext)
+  const { addBookToFind, dispatch } = useContext(QueryContext)
 
   const handleClick = () => {
+    dispatch( { type:'ADD_BOOK_ID', bookId: id } )
+    dispatch( { type: 'ADD_OVERVIEW', overview: overview } )
     addBookToFind(id, overview)
   }
 

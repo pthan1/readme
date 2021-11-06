@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useState, useReducer, useEffect } from "react"
+import { queryReducer } from "../reducers/QueryReducer"
 
 export const QueryContext = createContext()
 
@@ -8,6 +9,17 @@ const QueryContextProvider = props => {
   const [bookId, setBookId] = useState("")
   const [overview, setOverview] = useState("")
   const [isLoggedin, setIsLoggedin] = useState(false)
+
+  const [query, dispatch] = useReducer(queryReducer, {
+    bookTitle: '',
+    category: '',
+    bookId: '',
+    overview: '',
+  })
+  
+  useEffect(() => {
+    localStorage.setItem('query', JSON.stringify(query))
+  }, [query])
 
   const addBookTitle = userInput => {
     const processedInput = userInput.split(" ")
@@ -41,6 +53,7 @@ const QueryContextProvider = props => {
   return (
     <QueryContext.Provider
       value={{
+        query,
         bookTitle,
         addBookTitle,
         category,
@@ -48,8 +61,8 @@ const QueryContextProvider = props => {
         bookId,
         addBookToFind,
         overview,
-        isLoggedin,
-        toggleLogin,
+        dispatch,
+        toggleLogin
       }}
     >
       {props.children}
