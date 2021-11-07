@@ -16,7 +16,7 @@ export default function User() {
     </div>
   ) : (
     <Link to="/login" className="login-link">
-      <p>Login</p>
+      <p className='login-link'>Login</p>
     </Link>
   )
 }

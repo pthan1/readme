@@ -32,5 +32,6 @@
   .landing-body {
     min-width: 350px;
     min-height: 350px;
+    opacity: 0.9;
   }
 }

@@ -33,4 +33,8 @@
     height: 60px;
     margin-left: 10px;
   }
+
+  .nav-bar {
+    height: auto;
+  }
 }

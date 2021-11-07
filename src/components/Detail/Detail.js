@@ -55,7 +55,7 @@ const addToReadingListDisplay = () => {
           </Link>
           </div>
           {bookInfo.imageLinks ? <img className="detail-cover" alt="large book cover" src={bookInfo.imageLinks} /> : 
-          <h2>We don't have a cover for this book but it is a good one </h2>}
+          <h2 className='missing-cover'>We don't have a cover for this book but it is a good one </h2>}
         </div>
         <div className="detail-container">
           <div className="detail-info">

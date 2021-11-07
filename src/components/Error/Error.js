@@ -5,7 +5,7 @@ import logo2 from '../../images/logo-book2.png'
 
 const Error = () => {
   return ( 
-    <section className="landing-body">
+    <section className="landing-body-error">
       <img className="logo" alt="readme logo" src={logo2} />
       <p className="prompt">We are sorry, something went wrong, please try searching again...</p>
       <SearchBar />

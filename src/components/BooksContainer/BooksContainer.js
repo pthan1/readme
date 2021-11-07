@@ -54,7 +54,7 @@ const BooksContainer = () => {
       <div className="books-container-view">
         <Nav />
         <div className="display-body">
-          <p className="p-prompt">To give you more precise recommendations, please select one of these books</p>
+          <p className="p-prompt">To give you a more precise recommendations, please select one of these books</p>
           <div className="card-container">{bookCards}</div>
         </div>
       </div>
