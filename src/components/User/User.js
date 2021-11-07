@@ -2,14 +2,17 @@ import React, { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { Link } from "react-router-dom"
 import ReadingList from "../ReadingList/ReadingList"
+import "./User.css"
 
 export default function User() {
   const { user, isLoggedin, toggleLogin } = useContext(AuthContext)
   return isLoggedin ? (
-    <div>
-      <span>Hello, {user.name} </span>
+    <div className="loggedin">
+      <p>Hello, {user.name} </p>
       {window.location.pathname === "/readinglist" ? null : <Link to="/readinglist"> Reading List </Link>}
-      <span onClick={toggleLogin}>Log out</span>
+      <p onClick={toggleLogin} className="logout">
+        Log out
+      </p>
     </div>
   ) : (
     <Link to="/login" className="login-link">
