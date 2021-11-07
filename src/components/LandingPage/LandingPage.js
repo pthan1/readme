@@ -5,8 +5,7 @@ import logo2 from "../../images/logo-book2.png"
 import User from "../User/User"
 
 const LandingPage = () => {
-  // const { isLoggedIn } = useContext(QueryContext)
-  // const { user } = useContext(AuthContext)
+  
   return (
     <section className="landing-body">
       <User />

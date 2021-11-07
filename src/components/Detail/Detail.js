@@ -33,10 +33,12 @@ const Detail = props => {
     <div className="detail-view">
       <Nav />
       <div className="overview-display">
-        <div className="right-container">
+        <div className="left-container">
+          <div className='arrow-container'>
           <Link to="/recommendations">
             <img className="go-back-arrow" alt="this is a left arrow" src={arrow} />
           </Link>
+          </div>
           {bookInfo.imageLinks ? <img className="detail-cover" alt="large book cover" src={bookInfo.imageLinks} /> : 
           <h2>We don't have a cover for this book but it is a good one :)</h2>}
         </div>
@@ -48,7 +50,6 @@ const Detail = props => {
             </div>
             <p className="detail-author">Author: {bookInfo.author} </p>
             <p className="detail-rating">Rating:{bookInfo.rating}</p>
-            <p className="buying-links">Links</p>
             <button className="add-readlist-btn">Add to reading list</button>
           </div>
         </div>

@@ -9,10 +9,6 @@ const NavBar = () => {
     <nav className="nav-bar">
       <img src={logo2} alt="nav bar website logo" />
       <SearchBar />
-      {/* <ul>
-        <li> Log In </li>
-        <li> Read List</li>
-      </ul> */}
       <User />
     </nav>
   )
