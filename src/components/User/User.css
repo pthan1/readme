@@ -1,4 +1,4 @@
-.user {
+/* .user {
   display: flex;
 }
 
@@ -6,4 +6,20 @@
   display: flex;
   align-items: center;
   margin-bottom: 13px;
+} */
+.loggedin {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+  align-self: flex-end;
+  margin: 5% 5% 0 0;
+}
+
+.loggedin a {
+  text-decoration: underline;
+}
+
+.logout {
+  text-decoration: underline;
 }

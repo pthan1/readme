@@ -1,0 +1,41 @@
+.reading-list-view {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f1f0f2;
+  height: max-content;
+}
+
+.display-body-reading-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.p-prompt-reading-list {
+  width: 200px;
+  text-align: center;
+  padding-top: 90px;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-container-reading-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  min-height: 800px;
+  max-height: 900px;
+  width: 55vw;
+  min-width: 600px;
+  opacity: 0.7;
+  background-color: wheat;
+  border-radius: 25px;
+  box-shadow: rgba(72, 64, 64, 0.825) -10px 5px 25px 0px;
+  padding: 30px;
+}

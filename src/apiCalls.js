@@ -30,4 +30,36 @@ const getSingleBook = (bookId) => {
   })
 }
 
-export { getBooksTitle, getRecommendations, getSingleBook }
+const addBookToReadingList = (newBook, userId) => {
+  return fetch(`http://localhost:5000/api/v1/users/add/${userId}`, {
+				method: 'PATCH',
+				body: JSON.stringify({newBook}),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+      .then(response => {
+          if (!response.ok) {
+            throw new Error(`Status: ${response.status}`)
+          }
+          return response.json()
+        })        
+}
+
+const deleteBookFromReadingList = (bookIdObj, userId) => {
+  return fetch(`http://localhost:5000/api/v1/users/delete/${userId}`, {
+				method: 'PATCH',
+				body: JSON.stringify(bookIdObj),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+      .then(response => {
+          if (!response.ok) {
+            throw new Error(`Status: ${response.status}`)
+          }
+          return response.json()
+        })        
+}
+
+export { getBooksTitle, getRecommendations, getSingleBook, addBookToReadingList, deleteBookFromReadingList }

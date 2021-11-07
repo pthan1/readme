@@ -4,6 +4,7 @@ import "./LandingPage.css"
 import logo2 from "../../images/logo-book2.png"
 import User from "../User/User"
 
+
 const LandingPage = () => {
   
   return (
