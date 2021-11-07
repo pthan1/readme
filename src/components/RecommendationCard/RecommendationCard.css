@@ -1,17 +1,31 @@
-.book-card img {
+.recommendation-card img {
   height: 210px;
   max-width: 140px;
+  opacity: 1;
 }
 
-.book-card p {
-  width: 100px;
-  font-size: 12px;
+.recommendation-card p {
+  width: 140px;
+  max-height: 60px;
+  font-size: 18px;
+  --contentWidth: 20vh;
+  overflow: scroll;
 }
 
-.book-card {
+.recommendation-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  max-width: 140px;
+  max-height: 250px;
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+.recommendation-card:hover {
+  transform: scale(1.1);
+  opacity: 1;
 }
 
 a {

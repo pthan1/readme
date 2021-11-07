@@ -12,10 +12,6 @@ const NavBar = () => {
       <img src={logo2} alt="nav bar website logo" />
       </Link>
       <SearchBar />
-      {/* <ul>
-        <li> Log In </li>
-        <li> Read List</li>
-      </ul> */}
       <User />
     </nav>
   )

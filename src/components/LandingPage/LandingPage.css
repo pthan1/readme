@@ -1,8 +1,8 @@
 .landing-body {
-  width: 45%;
+  width: 45vw;
   height: 93vh;
   min-width: 500px;
-  min-height: 800px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;

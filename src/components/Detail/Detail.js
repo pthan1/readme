@@ -48,12 +48,14 @@ const addToReadingListDisplay = () => {
     <div className="detail-view">
       <Nav />
       <div className="overview-display">
-        <div className="right-container">
+        <div className="left-container">
+          <div className='arrow-container'>
           <Link to="/recommendations">
             <img className="go-back-arrow" alt="this is a left arrow" src={arrow} />
           </Link>
+          </div>
           {bookInfo.imageLinks ? <img className="detail-cover" alt="large book cover" src={bookInfo.imageLinks} /> : 
-          <h2>We don't have a cover for this book but it is a good one :)</h2>}
+          <h2>We don't have a cover for this book but it is a good one </h2>}
         </div>
         <div className="detail-container">
           <div className="detail-info">
@@ -69,7 +71,7 @@ const addToReadingListDisplay = () => {
         </div>
       </div>
     </div>
-  ) : <Redirect to="/error" />
+  ) : <Redirect to="/error" /> 
   )
 }
 
