@@ -9,6 +9,7 @@ import Detail from "../Detail/Detail"
 import Login from "../LogIn/LogIn"
 import AuthContextProvider from "../../context/AuthContext"
 import Error from "../Error/Error"
+import ReadingList from "../ReadingList/ReadingList"
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route exact path="/recommendations" render={() => <RecommendationView />} />
           <Route exact path="/details/" render={() => <Detail />} />
           <Route exact path="/error" render={() => <Error />} />
+          <Route exact path="/readinglist" render={() => <ReadingList />} />
         </AuthContextProvider>
         {/* <Route exact path="/">
           <LandingPage />

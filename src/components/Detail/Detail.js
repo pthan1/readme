@@ -5,27 +5,35 @@ import { QueryContext } from "../../context/QueryContext"
 import Nav from "../Nav/Nav"
 import "./Detail.css"
 import arrow from '../../arrow.svg'
+import { AuthContext } from "../../context/AuthContext"
 
 const Detail = props => {
   const [bookInfo, setBookInfo] = useState({})
   const [error, setError] = useState('')
+  const { user, patchBook } = useContext(AuthContext);
+  const [isInRl, setIsInRl] = useState(false)
   const { query } = useContext(QueryContext)
 
   useEffect(() => {
     getSingleBook(query.bookId)
-      .then(data => {
+      .then(data => { 
         setBookInfo({
           author: data.volumeInfo.authors[0],
           category: data.volumeInfo.categories[0],
           imageLinks: data.volumeInfo.imageLinks.medium,
           title: data.volumeInfo.title,
           rating: data.volumeInfo.averageRating,
+          id: data.id,
         })
+        if (user.readingList.some(book =>book.id === data.id)){
+            setIsInRl(true)
+        }
+        
       })
       .catch(error => {
-        console.error(error)
         setError('Something went side ways')
       })
+
   }, [query.bookId])
 
   return (
@@ -49,7 +57,10 @@ const Detail = props => {
             <p className="detail-author">Author: {bookInfo.author} </p>
             <p className="detail-rating">Rating:{bookInfo.rating}</p>
             <p className="buying-links">Links</p>
-            <button className="add-readlist-btn">Add to reading list</button>
+            
+           
+            {isInRl ? <p>Added to Reading List</p> : <button className="add-readlist-btn" onClick={() => {   setIsInRl(true);
+              patchBook(bookInfo, query.overview)}}> Add to reading list </button>}
           </div>
         </div>
       </div>

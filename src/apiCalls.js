@@ -30,4 +30,28 @@ const getSingleBook = (bookId) => {
   })
 }
 
-export { getBooksTitle, getRecommendations, getSingleBook }
+const addBookToReadingList = (newBook, userId) => {
+  return fetch(`http://localhost:5000/api/v1/users/add/${userId}`, {
+				method: 'PATCH',
+				body: JSON.stringify({newBook}),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+				.then((response) => response.json())
+        
+}
+
+const deleteBookFromReadingList = (bookIdObj, userId) => {
+  return fetch(`http://localhost:5000/api/v1/users/delete/${userId}`, {
+				method: 'PATCH',
+				body: JSON.stringify(bookIdObj),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+				.then((response) => response.json())
+        
+}
+
+export { getBooksTitle, getRecommendations, getSingleBook, addBookToReadingList, deleteBookFromReadingList }

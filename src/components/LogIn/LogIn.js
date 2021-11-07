@@ -15,7 +15,7 @@ const Login = () => {
         // const names = data.map(ele => ele.name)
         setUsers(data)
       })
-  })
+  }, [])
 
   const dropdownRef = useRef()
 
