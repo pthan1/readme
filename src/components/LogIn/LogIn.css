@@ -1,0 +1,21 @@
+.select {
+  height: 40px;
+  width: 150px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10%;
+  outline: none;
+  text-align: center;
+  background-color: #f1f0f2;
+}
+
+.login-btn {
+  height: auto;
+  width: auto;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 28%;
+  background-color: #d99771;
+}
