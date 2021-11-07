@@ -10,8 +10,7 @@ import { AuthContext } from "../../context/AuthContext"
 const Detail = props => {
   const [bookInfo, setBookInfo] = useState({})
   const [error, setError] = useState('')
-  const { user, patchBook } = useContext(AuthContext);
-  const [isInRl, setIsInRl] = useState(false)
+  const { user, patchBook, isLoggedIn } = useContext(AuthContext);
   const { query } = useContext(QueryContext)
 
   useEffect(() => {
@@ -25,16 +24,24 @@ const Detail = props => {
           rating: data.volumeInfo.averageRating,
           id: data.id,
         })
-        if (user.readingList.some(book =>book.id === data.id)){
-            setIsInRl(true)
-        }
-        
       })
       .catch(error => {
         setError('Something went side ways')
       })
 
   }, [query.bookId])
+
+const addToReadingListDisplay = () => {
+  if (user) {
+    if (user.readingList.some(book => book.id === bookInfo.id)) {
+    return <p>Added to Reading List</p> 
+    } else {
+    return <button className="add-readlist-btn" onClick={() => {   
+              patchBook(bookInfo, query.overview)
+              }}> Add to reading list </button>
+   } 
+  }
+}
 
   return (
     !error && query.bookId ? (
@@ -57,10 +64,7 @@ const Detail = props => {
             <p className="detail-author">Author: {bookInfo.author} </p>
             <p className="detail-rating">Rating:{bookInfo.rating}</p>
             <p className="buying-links">Links</p>
-            
-           
-            {isInRl ? <p>Added to Reading List</p> : <button className="add-readlist-btn" onClick={() => {   setIsInRl(true);
-              patchBook(bookInfo, query.overview)}}> Add to reading list </button>}
+            {addToReadingListDisplay()}
           </div>
         </div>
       </div>

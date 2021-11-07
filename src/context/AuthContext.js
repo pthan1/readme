@@ -5,7 +5,7 @@ export const AuthContext = createContext()
 
 const AuthContextProvider = props => {
   const [isLoggedin, setIsLoggedin] = useState(false)
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null)
   const [patchError, setPatchError] = useState("")
 
   const toggleLogin = () => {

@@ -70,7 +70,10 @@ cy.get('.prompt').contains('Welcome to readME!')
     .get('.book-card').first()
     .click();
 
-    cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=subject:Fiction&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book2'}).get('.go-back-arrow').click();
+    cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=subject:Fiction&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book2'})
+    .get('.overview-display')
+    .get('.right-container')
+    .get('.go-back-arrow').click();
 
     cy.get('.book-card')
     .contains('Slightly South of Simple')
