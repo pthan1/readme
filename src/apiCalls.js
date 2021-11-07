@@ -30,16 +30,28 @@ const getSingleBook = (bookId) => {
   })
 }
 
-const patchBookToReadingList = (newReadingList, userId) => {
-  return fetch(`http://localhost:5000/api/v1/users/${userId}`, {
+const addBookToReadingList = (newBook, userId) => {
+  return fetch(`http://localhost:5000/api/v1/users/add/${userId}`, {
 				method: 'PATCH',
-				body: JSON.stringify({newReadingList}),
+				body: JSON.stringify({newBook}),
 				headers: {
 					'Content-Type': 'application/json'
 				}
 			})
 				.then((response) => response.json())
-				.then((data) => console.log(data));
+        
+}
+
+const deleteBookFromReadingList = (bookIdObj, userId) => {
+  return fetch(`http://localhost:5000/api/v1/users/delete/${userId}`, {
+				method: 'PATCH',
+				body: JSON.stringify(bookIdObj),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+				.then((response) => response.json())
+        
 }
 //PATCH function to add a book to a user's reading list
 // pathes the book object onto the user object found in app.locals
@@ -47,4 +59,4 @@ const patchBookToReadingList = (newReadingList, userId) => {
 //DELETE functiont o delete a book from a user's reading list
 //  
 
-export { getBooksTitle, getRecommendations, getSingleBook, patchBookToReadingList }
+export { getBooksTitle, getRecommendations, getSingleBook, addBookToReadingList, deleteBookFromReadingList }

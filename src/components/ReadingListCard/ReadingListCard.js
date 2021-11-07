@@ -1,18 +1,23 @@
 import React, { useContext } from "react"
 import "./ReadingListCard.css"
-import { QueryContext } from "../../context/QueryContext"
+import { AuthContext } from "../../context/AuthContext"
 
-const RecommendationCard = ({ imageLinks, title, id, overview }) => {
+const ReadingListCard = ({ imageLinks, title, id, overview }) => {
+  const { deleteBook } = useContext(AuthContext);
+  const bookIdObj = {bookId:id};
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
+deleteBook(bookIdObj)
   }
 
   return (
-    <div onClick={() => handleClick()} className="rl-book-card">
+    <div className="rl-book-card">
       <img src={imageLinks} alt={`${title} cover`} />
       <p>{title}</p>
+      <button type="button" onClick={(e) => {handleClick(e)}}>Delete From Reading List</button>
     </div>
   )
 }
 
-export default RecommendationCard
+export default ReadingListCard

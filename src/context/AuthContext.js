@@ -1,11 +1,12 @@
 import React, { createContext, useState } from "react"
-import { patchBookToReadingList } from "..//apiCalls"
+import { addBookToReadingList, deleteBookFromReadingList } from "..//apiCalls"
 
 export const AuthContext = createContext()
 
 const AuthContextProvider = props => {
   const [isLoggedin, setIsLoggedin] = useState(false)
   const [user, setUser] = useState({})
+  const [patchError, setPatchError] = useState("")
 
   const toggleLogin = () => {
     setIsLoggedin(!isLoggedin)
@@ -15,15 +16,18 @@ const AuthContextProvider = props => {
     setUser(user)
   }
 
-  const setBookToReadingList = (book) => {
-    const usersReadingList = user.readingList;
-    usersReadingList.push(book);
-    patchBookToReadingList(usersReadingList, user.Id);
+  const patchBook = (book, overview) => {
+    const newBook = {...book, overview: overview};
+    addBookToReadingList(newBook, user.id)
+    .then((newReadingList) => setUser({...user, readingList: newReadingList}))
+    .catch(error => setPatchError(error));
   }
 
-  // const deleteBookFromReadinList = (id) => {
-  //   //delete request 
-  // }
+  const deleteBook = (bookIdObj) => {
+  deleteBookFromReadingList(bookIdObj, user.id)
+  .then((newReadingList) => setUser({...user, readingList: newReadingList}))
+    .catch(error => setPatchError(error));
+  }
 
   return (
     <AuthContext.Provider
@@ -32,8 +36,8 @@ const AuthContextProvider = props => {
         toggleLogin,
         user,
         grabUser,
-        setBookToReadingList,
-        // deleteBookFromReadingList
+        patchBook,
+        deleteBook
       }}
     >
       {props.children}
