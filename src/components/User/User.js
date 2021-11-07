@@ -12,8 +12,8 @@ export default function User() {
       <span onClick={toggleLogin}>Log out</span>
     </div>
   ) : (
-    <Link to="/login">
-      <p className="login-link">Login</p>
+    <Link to="/login" className="login-link">
+      <p>Login</p>
     </Link>
   )
 }
