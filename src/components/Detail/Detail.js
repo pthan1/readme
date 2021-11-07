@@ -32,6 +32,18 @@ const Detail = props => {
 
   }, [query.bookId])
 
+const addToReadingListDisplay = () => {
+  if (user) {
+    if (user.readingList.some(book => book.id === bookInfo.id)) {
+    return <p>Added to Reading List</p> 
+    } else {
+    return <button className="add-readlist-btn" onClick={() => {   
+              patchBook(bookInfo, query.overview)
+              }}> Add to reading list </button>
+   } 
+  }
+}
+
   return (
     !error && query.bookId ? (
     <div className="detail-view">
@@ -53,10 +65,11 @@ const Detail = props => {
             <p className="detail-author">Author: {bookInfo.author} </p>
             <p className="detail-rating">Rating:{bookInfo.rating}</p>
             <p className="buying-links">Links</p>
-            {user && user.readingList.some(book => book.id === bookInfo.id) ? <p>Added to Reading List</p> : <button className="add-readlist-btn" onClick={() => {   
+            {addToReadingListDisplay()}
+            {/* {user && user.readingList.some(book => book.id === bookInfo.id) ? <p>Added to Reading List</p> : <button className="add-readlist-btn" onClick={() => {   
               patchBook(bookInfo, query.overview)
               }}> Add to reading list </button>
-              }
+              } */}
           </div>
         </div>
       </div>
