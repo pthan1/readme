@@ -16,6 +16,7 @@
   align-items: center;
   justify-content: center;
   max-width: 140px;
+  height: 280px;
   opacity: 1;
   transition-duration: 0.5s;
 }
