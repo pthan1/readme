@@ -53,10 +53,5 @@ const deleteBookFromReadingList = (bookIdObj, userId) => {
 				.then((response) => response.json())
         
 }
-//PATCH function to add a book to a user's reading list
-// pathes the book object onto the user object found in app.locals
-
-//DELETE functiont o delete a book from a user's reading list
-//  
 
 export { getBooksTitle, getRecommendations, getSingleBook, addBookToReadingList, deleteBookFromReadingList }

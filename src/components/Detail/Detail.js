@@ -17,7 +17,6 @@ const Detail = props => {
   useEffect(() => {
     getSingleBook(query.bookId)
       .then(data => { 
-        console.log('POTATOES')
         setBookInfo({
           author: data.volumeInfo.authors[0],
           category: data.volumeInfo.categories[0],
@@ -32,7 +31,6 @@ const Detail = props => {
         
       })
       .catch(error => {
-        console.log('ERROR')
         setError('Something went side ways')
       })
 
