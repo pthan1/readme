@@ -27,3 +27,10 @@
   height: 80px;
   margin-left: 45px;
 }
+
+@media screen and (max-width: 450px) {
+  .nav-bar img {
+    height: 60px;
+    margin-left: 10px;
+  }
+}

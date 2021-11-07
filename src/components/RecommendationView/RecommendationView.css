@@ -44,3 +44,24 @@
   --contentWidth: 70vw;
   overflow: scroll;
 }
+
+@media screen and (max-width: 450px) {
+
+  .recommendation-view {
+    min-width: 350px;
+  }
+  .display-body-recommendation {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-container-recommendation {
+    min-width: 350px;
+  }
+
+  .p-prompt-recommendation {
+    margin-bottom: 20px;
+    font-size: 25px;
+    padding-top: 10px;
+  }
+}
