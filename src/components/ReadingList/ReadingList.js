@@ -9,14 +9,14 @@ const ReadingList = () => {
   const { user, isLoggedIn, deleteBookFromReadingList } = useContext(AuthContext)
   const readingListCards = user.readingList.map(book => {
     return (
-      <Link to="/details">
+      <Link to="/details" className="rl-card-link">
         <ReadingListCard
-          className={"card"}
+          // className={"card"}
           imageLinks={book.imageLinks}
           title={book.title}
           key={book.key}
           id={book.id}
-          overview={book.overview}
+          // overview={book.overview}
           deleteBookFromReadingList={deleteBookFromReadingList}
         />
       </Link>

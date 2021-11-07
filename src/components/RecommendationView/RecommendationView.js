@@ -42,9 +42,9 @@ const RecommendationView = () => {
 
   const recommendationCards = searchResults.map(searchResult => {
     return (
-      <Link to="/details">
+      <Link to="/details" className="rec-card-link">
         <RecommendationCard
-          className={"card"}
+          // className={"card"}
           imageLinks={searchResult.imageLinks}
           title={searchResult.title}
           key={searchResult.key}
