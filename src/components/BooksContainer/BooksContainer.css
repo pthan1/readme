@@ -6,6 +6,7 @@
   min-height: 100vh;
   background-color: #f1f0f2;
   height: max-content;
+  font-family: 'PlayfairDisplay';
 }
 
 .display-body {
@@ -19,7 +20,7 @@
   width: 200px;
   text-align: center;
   padding-top: 90px;
-  font-size: 205x;
+  font-size: 25px;
   font-family: 'PlayfairDisplay';
 }
 
@@ -30,13 +31,16 @@
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
-  min-height: 700px;
+  min-height: 500px;
   max-height: 900px;
+  height: 90vh;
   width: 55vw;
   min-width: 600px;
-  opacity: 0.7;
+  opacity: 0.8;
   background-color: wheat;
   border-radius: 25px;
   box-shadow: rgba(72, 64, 64, 0.825) -10px 5px 25px 0px;
   padding: 30px;
+  --contentWidth: 70vw;
+  overflow: scroll;
 }

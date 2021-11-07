@@ -11,7 +11,7 @@ const RecommendationCard = ({ imageLinks, title, id, overview }) => {
   }
 
   return (
-    <div onClick={() => handleClick()} className="book-card">
+    <div onClick={() => handleClick()} className="recommendation-card">
       <img src={imageLinks} alt={`${title} cover`} />
       <p>{title}</p>
     </div>

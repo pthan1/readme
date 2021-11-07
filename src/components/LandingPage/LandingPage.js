@@ -3,12 +3,6 @@ import SearchBar from "../SearchBar/SearchBar"
 import "./LandingPage.css"
 import logo2 from "../../images/logo-book2.png"
 import User from "../User/User"
-// import Login from "../LogIn/LogIn"
-// import { QueryContext } from "../../context/QueryContext"
-// import { AuthContext } from "../../context/AuthContext"
-
-// import { Link } from "react-router-dom"
-// import { Route } from "react-router-dom"
 
 const LandingPage = () => {
   // const { isLoggedIn } = useContext(QueryContext)
