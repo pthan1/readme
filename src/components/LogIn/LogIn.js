@@ -12,10 +12,10 @@ const Login = () => {
     fetch("http://localhost:5000/api/v1/users")
       .then(response => response.json())
       .then(data => {
-        // const names = data.map(ele => ele.name)
+        const names = data.map(ele => ele.name)
         setUsers(data)
       })
-  }, [])
+  },[])
 
   const dropdownRef = useRef()
 

@@ -38,8 +38,12 @@ const addBookToReadingList = (newBook, userId) => {
 					'Content-Type': 'application/json'
 				}
 			})
-				.then((response) => response.json())
-        
+      .then(response => {
+          if (!response.ok) {
+            throw new Error(`Status: ${response.status}`)
+          }
+          return response.json()
+        })        
 }
 
 const deleteBookFromReadingList = (bookIdObj, userId) => {
@@ -50,8 +54,12 @@ const deleteBookFromReadingList = (bookIdObj, userId) => {
 					'Content-Type': 'application/json'
 				}
 			})
-				.then((response) => response.json())
-        
+      .then(response => {
+          if (!response.ok) {
+            throw new Error(`Status: ${response.status}`)
+          }
+          return response.json()
+        })        
 }
 
 export { getBooksTitle, getRecommendations, getSingleBook, addBookToReadingList, deleteBookFromReadingList }
