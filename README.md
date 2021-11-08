@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Readme App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Mod 3 Project
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Abstract](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
+- [Technologies](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
+- [Code Architecture](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
+- [Install and Set Up](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
+- [Illustrations](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
+- [Wins](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
+- [Challenges](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
+- [Contributors](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
+- [Project Specs](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
 
-### `npm start`
+## Abstract
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Web application that helps the user choose the next book to read based on a book the user likes.
+The goal of this project was to implement at least one self though technology by creating an interactive web application, in this case the user can log in and create a reading list.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies
 
-### `npm test`
+- Javascript
+- HTML
+- CSS
+- React
+- React Router
+- ContextAPI
+- Hooks
+- Cypress
+- Express.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Install and Set Up
 
-### `npm run build`
+To run the application:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone down the Readme repo
+2. Cd into `readme`
+3. Run `npm install`
+4. Run `npm start`
+5. Your browser will open the website.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run Cypress tests:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. In a separate terminal, run `npx cypress open`
+2. Cypress browser will load, choose a test and see the results
 
-### `npm run eject`
+## Code Architecture
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The React architecture is based on 18 functional components, we used 2 context to manage state globally using local storage and reducer functions to make these more readable and to pass two class components and three functional components. The class components holds state and are in charge of the network requests, while the functional components just render information passed down as props.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Illustrations
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Wins
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Great team collaboration
 
-## Learn More
+## Challenges & Improvements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Had trouble intercepting API requests during Cypress testing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Future Features
 
-### Code Splitting
+## Contributors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [Carlos Gomez](https://github.com/karmacarlos)
 
-### Analyzing the Bundle Size
+## Project Specs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- The project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-3/stretch.html)
