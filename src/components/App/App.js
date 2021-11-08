@@ -1,6 +1,5 @@
 import "./App.css"
 import BooksContainer from "../BooksContainer/BooksContainer"
-// import BookOverview from "../BookOverview/BookOverview"
 import QueryContextProvider from "../../context/QueryContext"
 import { Route, Switch } from "react-router-dom"
 import LandingPage from "../LandingPage/LandingPage"

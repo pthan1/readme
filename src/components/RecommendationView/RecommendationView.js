@@ -44,7 +44,6 @@ const RecommendationView = () => {
     return (
       <Link to="/details" className="rec-card-link">
         <RecommendationCard
-          // className={"card"}
           imageLinks={searchResult.imageLinks}
           title={searchResult.title}
           key={searchResult.key}

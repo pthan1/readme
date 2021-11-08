@@ -40,8 +40,7 @@ const Detail = props => {
             className="add-readlist-btn"
             onClick={() => {
               patchBook(bookInfo, query.overview)
-            }}
-          >
+            }}>
             Add to reading list
           </button>
         )

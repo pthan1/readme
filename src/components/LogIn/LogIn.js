@@ -4,24 +4,21 @@ import { Link } from "react-router-dom"
 import logo2 from "../../images/logo-book2.png"
 import "./LogIn.css"
 
-// import { useHistory } from "react-router-dom"
-
 const Login = () => {
   const [users, setUsers] = useState([])
   const { toggleLogin, grabUser } = useContext(AuthContext)
+  const dropdownRef = useRef()
 
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/users")
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         const names = data.map(ele => ele.name)
         setUsers(data)
       })
   },[])
 
-  const dropdownRef = useRef()
-
+  
   const loginUser = () => {
     toggleLogin()
     let selectedUser = users.find(ele => ele.id === dropdownRef.current.value)
@@ -31,9 +28,7 @@ const Login = () => {
   return (
     <section className="landing-body">
       <img className="logo" alt="readme logo" src={logo2} />
-
       <p className="prompt">Welcome back. Please select your name</p>
-      {/* <div className="login"> */}
       <select ref={dropdownRef} className="select">
         {users.map(user => (
           <option value={user.id} key={user.id}>
@@ -46,7 +41,6 @@ const Login = () => {
           Log me in
         </button>
       </Link>
-      {/* </div> */}
     </section>
   )
 }

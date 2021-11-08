@@ -26,8 +26,7 @@ const ReadingListCard = ({ imageLinks, title, id, overview }) => {
           type="button"
           onClick={e => {
             handleClick(e)
-          }}
-        >
+          }}>
           Delete From Reading List
         </button>
       </div>
