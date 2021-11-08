@@ -25,8 +25,6 @@
 .card-container-reading-list {
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
-  /* justify-content: center; */
   align-items: flex-start;
   gap: 1rem;
   min-height: 800px;
@@ -39,4 +37,30 @@
   box-shadow: rgba(72, 64, 64, 0.825) -10px 5px 25px 0px;
   padding: 30px;
   overflow: auto;
+}
+
+@media screen and (max-width: 450px) {
+  .reading-list-view {
+    min-width: 350px;
+    width: 100%;
+  }
+
+  .display-body-reading-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-container-reading-list {
+    min-width: 350px;
+  }
+
+  .p-prompt-reading-list {
+    margin-bottom: 20px;
+    font-size: 25px;
+    padding-top: 10px;
+  }
+
+  .top-cat {
+    display: none;
+  }
 }

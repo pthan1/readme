@@ -40,3 +40,10 @@
   align-self: center;
   margin-top: 2%;
 }
+
+@media screen and (max-width: 450px) {
+  .rl-delete-btn {
+    width: 80%;
+    height: auto;
+  }
+}
