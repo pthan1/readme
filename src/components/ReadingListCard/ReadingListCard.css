@@ -1,5 +1,22 @@
 .rl-book-card {
-  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+}
+
+.rl-card-detail {
+  display: flex;
+  flex-direction: column;
+  height: 210px;
+  justify-content: space-between;
+  padding: 3% 0;
+  max-width: 70%;
+}
+
+.rl-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .rl-book-card img {
@@ -7,22 +24,26 @@
   max-width: 140px;
 }
 
-.rl-book-card p {
-  width: 100px;
-  font-size: 12px;
-}
-
-.rl-book-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-a {
+.rl-card-link {
   text-decoration: none;
   color: black;
+  width: 100%;
 }
 
-a:hover {
-  text-decoration: underline;
+.rl-delete-btn {
+  width: 50%;
+  border: none;
+  outline: none;
+  padding: 5px;
+  background-color: #d99771;
+  border-radius: 5px;
+  align-self: center;
+  margin-top: 2%;
+}
+
+@media screen and (max-width: 450px) {
+  .rl-delete-btn {
+    width: 80%;
+    height: auto;
+  }
 }
