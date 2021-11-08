@@ -55,8 +55,10 @@ const BooksContainer = () => {
         <Nav />
         <div className="display-body">
           <p className="p-prompt">To give you more precise recommendations, please select one of these books</p>
-          <div className="card-container">{bookCards}</div>
+          <div className="card-container">
+          {bookCards.length < 1 ? <p>Sorry we didn't find any books.  Please search again.</p> : bookCards}
         </div>
+      </div>
       </div>
     ) : <Redirect to='/error' />
   )
