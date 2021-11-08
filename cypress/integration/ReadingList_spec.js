@@ -27,7 +27,7 @@ describe('Reading List flows', () => {
   })
 
   it('A user should be able to view reading list once logged on', () => {
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
     )
     .get('.link-to-login')
     .click()
@@ -42,7 +42,7 @@ describe('Reading List flows', () => {
   })
 
   it('A user should be able to see a message if the reading list is empty', () => {
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
     )
     .get('.link-to-login')
     .click()
@@ -57,7 +57,7 @@ describe('Reading List flows', () => {
   })
 
   it('A user should have the option to add a book to their reading list', () => {
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
     )
     .get('.link-to-login')
     .click()
@@ -82,13 +82,13 @@ describe('Reading List flows', () => {
       .first()
       .click()
 
-    cy.intercept('PATCH', 'http://localhost:5000/api/v1/users/add/a2', { fixture: 'bookToPost' })
+    cy.intercept('PATCH', 'https://readme-user-api.herokuapp.com/api/v1/users/add/a2', { fixture: 'bookToPost' })
       .get('.add-readlist-btn')
       .should('exist')
   })
 
   it('A user should be able to see that a message that book has been added to their reading list', () => {
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
     )
       .get('.link-to-login')
       .click()
@@ -113,7 +113,7 @@ describe('Reading List flows', () => {
       .first()
       .click()
 
-    cy.intercept('PATCH', 'http://localhost:5000/api/v1/users/add/a2', { fixture: 'bookToPost' })
+    cy.intercept('PATCH', 'https://readme-user-api.herokuapp.com/api/v1/users/add/a2', { fixture: 'bookToPost' })
       .get('.add-readlist-btn')
       .click()
       .get('.overview-display')
@@ -121,7 +121,7 @@ describe('Reading List flows', () => {
   })
 
   it('A user should be able to see a book that\'s been added on their Reading lList', () => {
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
     )
       .get('.link-to-login')
       .click()
@@ -146,7 +146,7 @@ describe('Reading List flows', () => {
       .first()
       .click()
 
-    cy.intercept('PATCH', 'http://localhost:5000/api/v1/users/add/a2', { fixture: 'bookToPost' })
+    cy.intercept('PATCH', 'https://readme-user-api.herokuapp.com/api/v1/users/add/a2', { fixture: 'bookToPost' })
       .get('.add-readlist-btn')
       .click()
       .get('.reading-list-link')
@@ -156,7 +156,7 @@ describe('Reading List flows', () => {
   })
 
   it('A user should be able to view a book\'s details when clicked on from the reading list', () => {
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
     )
       .get('.link-to-login')
       .click()
@@ -181,7 +181,7 @@ describe('Reading List flows', () => {
       .first()
       .click()
 
-    cy.intercept('PATCH', 'http://localhost:5000/api/v1/users/add/a2', { fixture: 'bookToPost' })
+    cy.intercept('PATCH', 'https://readme-user-api.herokuapp.com/api/v1/users/add/a2', { fixture: 'bookToPost' })
       .get('.add-readlist-btn')
       .click()
 
@@ -195,7 +195,7 @@ describe('Reading List flows', () => {
   })
 
   it('A user should be able to delete a book from the reading list', () => {
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
       )
       .get('.link-to-login')
       .click()
@@ -220,7 +220,7 @@ describe('Reading List flows', () => {
       .first()
       .click()
 
-    cy.intercept('PATCH', 'http://localhost:5000/api/v1/users/add/a2', { fixture: 'bookToPost' })
+    cy.intercept('PATCH', 'https://readme-user-api.herokuapp.com/api/v1/users/add/a2', { fixture: 'bookToPost' })
       .get('.add-readlist-btn')
       .click()
 
@@ -228,7 +228,7 @@ describe('Reading List flows', () => {
       .get('.reading-list-link')
       .click()
 
-    cy.intercept('PATCH', 'http://localhost:5000/api/v1/users/delete/a2', [])
+    cy.intercept('PATCH', 'https://readme-user-api.herokuapp.com/api/v1/users/delete/a2', [])
       .get('.rl-delete-btn')
       .click()
       .get('.card-container-reading-list')

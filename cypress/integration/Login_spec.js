@@ -4,7 +4,7 @@ describe('Reading List flows', () => {
   })
 
   it('should be able to login from the landing page', () => {
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
     )
     .get('.link-to-login')
     .click()
@@ -25,7 +25,7 @@ cy.get('input[type="text"]')
     .as('first-search')
     .get('.search-form').submit();
 
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
     )
     .get('.link-to-login')
     .click()
@@ -48,7 +48,7 @@ cy.get('input[type="text"]')
     .get('.book-card').first()
     .click();
 
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
     )
     .get('.link-to-login')
     .click()
@@ -75,7 +75,7 @@ cy.get('input[type="text"]')
     .get('.recommendation-card').first()
     .click();
     
-    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    cy.intercept('GET', 'https://readme-user-api.herokuapp.com/api/v1/users', { fixture: 'users' }
     )
     .get('.link-to-login')
     .click()

@@ -10,7 +10,7 @@ const Login = () => {
   const dropdownRef = useRef()
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/users")
+    fetch("https://readme-user-api.herokuapp.com/api/v1/users")
       .then(response => response.json())
       .then(data => {
         const names = data.map(ele => ele.name)
