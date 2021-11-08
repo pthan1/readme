@@ -27,7 +27,8 @@ return (
         <div className="display-body-reading-list">
           <p className="p-prompt-reading-list">Your Reading List</p>
           <div className="card-container-reading-list">    
-          {readingListCards}</div>
+          {user.readingList.length < 1 ? <p>Your Reading List is empty.  Search for a book and add it to view it here!</p> : readingListCards}
+          </div>
         </div>
       </div>
   )

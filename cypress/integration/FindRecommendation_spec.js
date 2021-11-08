@@ -33,7 +33,7 @@ cy.get('.prompt').contains('Welcome to readME!')
     cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=subject:Fiction&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book2'})
     .get('.book-card').first()
     .click()
-    cy.get('.book-card')
+    cy.get('.recommendation-card')
     .contains('Slightly South of Simple')
   })
 
@@ -49,7 +49,7 @@ cy.get('.prompt').contains('Welcome to readME!')
     .click()
 
     cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes/9fyxDgAAQBAJ?key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'singleBook'})
-    .get('.book-card').first()
+    .get('.recommendation-card').first()
     .click();
 
     cy.get('.detail-title').contains('Slightly South of Simple');
@@ -67,16 +67,20 @@ cy.get('.prompt').contains('Welcome to readME!')
     .click()
 
     cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes/9fyxDgAAQBAJ?key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'singleBook'})
-    .get('.book-card').first()
+    .get('.recommendation-card').first()
     .click();
 
     cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=subject:Fiction&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book2'})
     .get('.overview-display')
-    .get('.right-container')
+    .get('.left-container')
     .get('.go-back-arrow').click();
 
-    cy.get('.book-card')
+    cy.get('.recommendation-card')
     .contains('Slightly South of Simple')
 })
+
+it('The user should see a message if there are no recommenations to display') {
+  
+}
 
 })

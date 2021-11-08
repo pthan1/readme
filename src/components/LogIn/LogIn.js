@@ -9,12 +9,12 @@ import "./LogIn.css"
 const Login = () => {
   const [users, setUsers] = useState([])
   const { toggleLogin, grabUser } = useContext(AuthContext)
-  // const history = useHistory()
 
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/users")
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         const names = data.map(ele => ele.name)
         setUsers(data)
       })
@@ -24,10 +24,8 @@ const Login = () => {
 
   const loginUser = () => {
     toggleLogin()
-    console.log("selected", dropdownRef.current.value)
     let selectedUser = users.find(ele => ele.id === dropdownRef.current.value)
     grabUser(selectedUser)
-    // history.push("/")
   }
 
   return (

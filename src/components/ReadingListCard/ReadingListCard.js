@@ -15,7 +15,7 @@ deleteBook(bookIdObj)
     <div className="rl-book-card">
       <img src={imageLinks} alt={`${title} cover`} />
       <p>{title}</p>
-      <button type="button" onClick={(e) => {handleClick(e)}}>Delete From Reading List</button>
+      <button type="button" className="rl-delete-book" onClick={(e) => {handleClick(e)}}>Delete From Reading List</button>
     </div>
   )
 }

@@ -9,14 +9,14 @@ export default function User() {
   return isLoggedin ? (
     <div className="loggedin">
       <p>Hello, {user.name} </p>
-      {window.location.pathname === "/readinglist" ? null : <Link to="/readinglist"> Reading List </Link>}
+      {window.location.pathname === "/readinglist" ? null : <Link to="/readinglist"> <p className="reading-list-link"> Reading List </p> </Link>}
       <p onClick={toggleLogin} className="logout">
         Log out
       </p>
     </div>
   ) : (
     <Link to="/login" className="login-link">
-      <p>Login</p>
+      <p class="link-to-login">Login</p>
     </Link>
   )
 }
