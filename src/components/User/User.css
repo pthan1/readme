@@ -1,7 +1,8 @@
 .login-link {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  margin-bottom: 13px;
+  margin-bottom: 13px; */
+  align-self: center;
 }
 
 .loggedin {
@@ -9,8 +10,9 @@
   flex-direction: row;
   justify-content: flex-end;
   gap: 10px;
-  align-self: flex-end;
-  margin: 5% 5% 0 0;
+  align-self: center;
+
+  /* margin: 5% 5% 0 0; */
 }
 
 .loggedin a {
