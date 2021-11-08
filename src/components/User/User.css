@@ -1,19 +1,18 @@
-/* .user {
-  display: flex;
-}
-
 .login-link {
   display: flex;
-  align-items: center;
-  margin-bottom: 13px;
-} */
+  /* align-items: center; */
+  /* margin-bottom: 13px; */
+  align-self: flex-end;
+}
+
 .loggedin {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   gap: 10px;
-  align-self: flex-end;
-  margin: 5% 5% 0 0;
+  align-self: center;
+
+  /* margin: 5% 5% 0 0; */
 }
 
 .loggedin a {
@@ -22,4 +21,16 @@
 
 .logout {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 450px) {
+  .loggedin {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 3px;
+    align-self: center;
+    margin: 4% 4% 4% 0;
+    font-size: 15px;
+  }
 }

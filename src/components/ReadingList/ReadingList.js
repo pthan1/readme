@@ -1,35 +1,36 @@
-import React, { useContext} from "react";
-import { AuthContext } from "../../context/AuthContext";
-import ReadingListCard from "../ReadingListCard/ReadingListCard";
-import Nav from "../Nav/Nav";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react"
+import { AuthContext } from "../../context/AuthContext"
+import ReadingListCard from "../ReadingListCard/ReadingListCard"
+import Nav from "../Nav/Nav"
+import { Link } from "react-router-dom"
+import "./ReadingList.css"
 
 const ReadingList = () => {
-  const { user, isLoggedIn, deleteBookFromReadingList } = useContext(AuthContext);
+  const { user, isLoggedIn, deleteBookFromReadingList } = useContext(AuthContext)
   const readingListCards = user.readingList.map(book => {
-  return (
-      <Link to="/details">
+    return (
+      <Link to="/details" className="rl-card-link">
         <ReadingListCard
-          className={"card"}
+          // className={"card"}
           imageLinks={book.imageLinks}
           title={book.title}
           key={book.key}
           id={book.id}
-          overview={book.overview}
+          // overview={book.overview}
           deleteBookFromReadingList={deleteBookFromReadingList}
         />
       </Link>
-    )})
+    )
+  })
 
-return (
+  return (
     <div className="reading-list-view">
-        <Nav />
-        <div className="display-body-reading-list">
-          <p className="p-prompt-reading-list">Your Reading List</p>
-          <div className="card-container-reading-list">    
-          {readingListCards}</div>
-        </div>
+      <Nav />
+      <div className="display-body-reading-list">
+        <p className="p-prompt-reading-list">Your Reading List</p>
+        <div className="card-container-reading-list">{readingListCards}</div>
       </div>
+    </div>
   )
 }
 
