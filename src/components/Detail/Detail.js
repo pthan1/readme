@@ -75,7 +75,6 @@ const Detail = props => {
             </div>
             <p className="detail-author">Author: {bookInfo.author} </p>
             <p className="detail-rating">Rating:{bookInfo.rating}</p>
-            {/* <p className="buying-links">Links</p> */}
             {addToReadingListDisplay()}
           </div>
         </div>

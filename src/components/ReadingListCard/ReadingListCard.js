@@ -14,10 +14,6 @@ const ReadingListCard = ({ imageLinks, title, id, overview }) => {
   return (
     <div className="rl-book-card">
       <img src={imageLinks} alt={`${title} cover`} />
-<<<<<<< HEAD
-      <p>{title}</p>
-      <button type="button" className="rl-delete-book" onClick={(e) => {handleClick(e)}}>Delete From Reading List</button>
-=======
       <div className="rl-card-detail">
         <p className="rl-card-title">{title}</p>
         <p className="top-cat">
@@ -35,7 +31,6 @@ const ReadingListCard = ({ imageLinks, title, id, overview }) => {
           Delete From Reading List
         </button>
       </div>
->>>>>>> 3b0c07872cd9aa6114d82f2a5407320fdf3239f5
     </div>
   )
 }

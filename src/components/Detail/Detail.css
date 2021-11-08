@@ -75,12 +75,9 @@
 }
 
 .overview-container {
-  display: flex;
-  align-items: center;
   width: 40vw;
   max-height: 40vh;
   min-height: 20vh;
-  --contentHeight: 30vh;
   overflow: scroll;
 }
 

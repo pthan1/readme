@@ -25,7 +25,6 @@ const ReadingList = () => {
 
   return (
     <div className="reading-list-view">
-<<<<<<< HEAD
         <Nav />
         <div className="display-body-reading-list">
           <p className="p-prompt-reading-list">Your Reading List</p>
@@ -33,14 +32,7 @@ const ReadingList = () => {
           {user.readingList.length < 1 ? <p>Your Reading List is empty.  Search for a book and add it to view it here!</p> : readingListCards}
           </div>
         </div>
-=======
-      <Nav />
-      <div className="display-body-reading-list">
-        <p className="p-prompt-reading-list">Your Reading List</p>
-        <div className="card-container-reading-list">{readingListCards}</div>
->>>>>>> 3b0c07872cd9aa6114d82f2a5407320fdf3239f5
       </div>
-    </div>
   )
 }
 
