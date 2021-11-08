@@ -208,7 +208,9 @@ cy.get('input[type="text"]')
     cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes/9fyxDgAAQBAJ?key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'singleBook'})
     .get('.reading-list-link')
     .click()
-    .get('.rl-delete-book')
+
+    cy.intercept('PATCH', 'http://localhost:5000/api/v1/users/delete/a2', [])
+    .get('.rl-delete-btn')
     .click()
     .get('.card-container-reading-list')
     .contains('Your Reading List is empty.');

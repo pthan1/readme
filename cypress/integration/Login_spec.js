@@ -4,7 +4,9 @@ describe('Reading List flows', () => {
   })
 
   it('should be able to login from the landing page', () => {
-    cy.get('.link-to-login')
+    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    )
+    .get('.link-to-login')
     .click()
     .get('.select')
     .select('a2')
@@ -23,7 +25,9 @@ cy.get('input[type="text"]')
     .as('first-search')
     .get('.search-form').submit();
 
-        cy.get('.link-to-login')
+    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    )
+    .get('.link-to-login')
     .click()
     .get('.select')
     .select('a2')
@@ -44,7 +48,9 @@ cy.get('input[type="text"]')
     .get('.book-card').first()
     .click();
 
-        cy.get('.link-to-login')
+    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    )
+    .get('.link-to-login')
     .click()
     .get('.select')
     .select('a2')
@@ -69,7 +75,9 @@ cy.get('input[type="text"]')
     .get('.recommendation-card').first()
     .click();
     
-        cy.get('.link-to-login')
+    cy.intercept('GET', 'http://localhost:5000/api/v1/users', { fixture: 'users' }
+    )
+    .get('.link-to-login')
     .click()
     .get('.select')
     .select('a2')
@@ -79,7 +87,7 @@ cy.get('input[type="text"]')
     .contains('Hello, Phil')
   })
  
-  it('A user shoud be redirected to an error page if they visit an invalid url', () => {
+  it('A user should be redirected to an error page if they visit an invalid url', () => {
     cy.visit('http://localhost:3000/potatoes')
     .get('.prompt-error')
     .contains('We are sorry, something went wrong, please try searching again...')

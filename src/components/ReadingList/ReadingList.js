@@ -11,12 +11,10 @@ const ReadingList = () => {
     return (
       <Link to="/details" className="rl-card-link">
         <ReadingListCard
-          // className={"card"}
           imageLinks={book.imageLinks}
           title={book.title}
           key={book.key}
           id={book.id}
-          // overview={book.overview}
           deleteBookFromReadingList={deleteBookFromReadingList}
         />
       </Link>
