@@ -17,7 +17,7 @@ Mod 3 Project
 ## Abstract
 
 Web application that helps the user choose the next book to read based on a book the user likes.
-The goal of this project was to implement at least one self though technology by creating an interactive web application, in this case the user can log in and create a reading list.
+The goal of this project was to implement at least one self taught technology by creating an interactive web application, in this case the user can log in, search a book by title, see recommendations and create a reading list.
 
 ## Technologies
 
@@ -35,36 +35,49 @@ The goal of this project was to implement at least one self though technology by
 
 To run the application:
 
+You can see this application on the following link;
+
+[Readme](Deployed-link)
+
+To run Cypress tests:
+
 1. Clone down the Readme repo
 2. Cd into `readme`
 3. Run `npm install`
 4. Run `npm start`
 5. Your browser will open the website.
+6. In a separate terminal, run `npx cypress open`
+7. Cypress browser will load, choose a test and see the results
 
-To run Cypress tests:
-
-1. In a separate terminal, run `npx cypress open`
-2. Cypress browser will load, choose a test and see the results
 
 ## Code Architecture
 
-The React architecture is based on 18 functional components, we used 2 context to manage state globally using local storage and reducer functions to make these more readable and to pass two class components and three functional components. The class components holds state and are in charge of the network requests, while the functional components just render information passed down as props.
+The React architecture is based on 18 functional components, we used 2 context to manage state globally using local storage and reducer functions to make these more readable and to pass just two values as props to any of our child components.
 
 ## Illustrations
 
 ## Wins
 
 - Great team collaboration
+- Implementation of contextAPI
+- Implementation of React hooks 
+- Implementation of reducer functions to manage the interaction of our context with the rest of the components
 
 ## Challenges & Improvements
 
-- Had trouble intercepting API requests during Cypress testing
+- We had challenges cleaning the data
+- We had challenges making our state persist after refreshing the browser
+- We had challenges implementing a patch request to add and remove books from the reading list in our server
 
 ## Future Features
+
+- Improve the recommendation algorithm 
 
 ## Contributors
 
 - [Carlos Gomez](https://github.com/karmacarlos)
+- [Bei Zhang](https://github.com/beizy)
+- [Phil Than](https://github.com/pthan1)
 
 ## Project Specs
 
