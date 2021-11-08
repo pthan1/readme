@@ -79,4 +79,9 @@ cy.get('input[type="text"]')
     .contains('Hello, Phil')
   })
  
+  it('A user shoud be redirected to an error page if they visit an invalid url', () => {
+    cy.visit('http://localhost:3000/potatoes')
+    .get('.prompt-error')
+    .contains('We are sorry, something went wrong, please try searching again...')
+  })
 })
