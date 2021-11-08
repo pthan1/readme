@@ -9,21 +9,24 @@
   background-color: wheat;
   border-radius: 20px;
   margin: 2rem;
-  opacity: 0.7;
+  opacity: 0.8;
   box-shadow: rgba(72, 64, 64, 0.825) -10px 5px 25px 0px;
-}
-
-.login-link {
-  margin-top: 2rem;
-  align-self: flex-end;
-  padding-right: 2rem;
+  padding: 2rem 2rem 0 2rem;
 }
 
 .logo {
-  margin-top: 25%;
+  margin-top: 15%;
 }
 
 .prompt {
   margin: 10% 5rem 0 5rem;
   font-weight: bold;
+}
+
+@media screen and (max-width: 450px) {
+  .landing-body {
+    min-width: 350px;
+    min-height: 350px;
+    opacity: 0.9;
+  }
 }

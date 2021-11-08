@@ -42,9 +42,9 @@ const RecommendationView = () => {
 
   const recommendationCards = searchResults.map(searchResult => {
     return (
-      <Link to="/details">
+      <Link to="/details" className="rec-card-link">
         <RecommendationCard
-          className={"card"}
+          // className={"card"}
           imageLinks={searchResult.imageLinks}
           title={searchResult.title}
           key={searchResult.key}
@@ -60,7 +60,7 @@ const RecommendationView = () => {
       <Nav />
       <div className="display-body-recommendation">
         <p className="p-prompt-recommendation">
-          Because you liked <b>{query.clickedTitle} </b>you might like these books
+          Because you liked <b>{query.clickedTitle} </b>you might like these books:
         </p>
       <div className="card-container-recommendation">
         {recommendationCards.length < 1 ? <h2>We couldn't find good readings with that book, try again with another book</h2> :

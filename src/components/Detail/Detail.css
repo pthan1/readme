@@ -25,7 +25,6 @@
   font-size: 20px;
 }
 
-
 .add-readlist-btn {
   margin-top: 15px;
 }
@@ -36,6 +35,7 @@
 
 .detail-title {
   font-size: 30px;
+  margin-bottom: 15px;
 }
 
 .detail-cover {
@@ -61,7 +61,7 @@
   width: 40vw;
 }
 
-.detail-info{
+.detail-info {
   min-height: 70vh;
   display: flex;
   flex-direction: column;
@@ -94,4 +94,74 @@
   max-width: 400px;
   width: 40vw;
   height: 25vh;
+}
+
+.add-readlist-btn {
+  border: none;
+  outline: none;
+  background-color: #d99771;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.added-text {
+  color: #a64724;
+}
+
+@media screen and (max-width: 450px) {
+  .overview-display {
+    flex-direction: column-reverse;
+  }
+
+  .left-container {
+    min-height: 30px;
+    max-height: 350px;
+    width: 350px;
+    flex-direction: column-reverse;
+    margin-top: 40px;
+  }
+
+  .detail-container {
+    min-height: 400px;
+    max-height: 400px;
+    height: 500px;
+    width: 55vw;
+    min-width: 350px;
+    font-size: 15px;
+  }
+
+  .detail-title {
+    font-size: 18px;
+  }
+
+  .overview-container {
+    width: 200px;
+    max-height: 200px;
+    min-height: 20vh;
+    --contentHeight: 200px;
+  }
+
+  .go-back-arrow {
+    height: 30px;
+    margin-top: 40px;
+  }
+
+  .arrow-container {
+    justify-content: center;
+    max-width: 350px;
+    width: 350px;
+    height: 150px;
+  }
+
+  .detail-info {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .missing-cover {
+    margin: 15px;
+  }
 }

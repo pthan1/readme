@@ -9,7 +9,7 @@ import { getBooksTitle } from "../../apiCalls"
 
 const BooksContainer = () => {
   const [searchResults, setSearchResults] = useState([])
-  const [error, setError] = useState('')
+  const [error, setError] = useState("")
   const { query } = useContext(QueryContext)
 
   useEffect(() => {
@@ -17,27 +17,27 @@ const BooksContainer = () => {
       .then(data => {
         const filteredResults = data.items.filter(
           result => result.volumeInfo.imageLinks && result.volumeInfo.categories && result.volumeInfo.title
-          )
-          const cardInfo = filteredResults.map(result => {
-            let bookKey = uniqueString()
-            return {
-              category: result.volumeInfo.categories[0],
-              imageLinks: result.volumeInfo.imageLinks.thumbnail,
-              title: result.volumeInfo.title,
-              key: bookKey,
-            }
-          })
-          setSearchResults(cardInfo)
+        )
+        const cardInfo = filteredResults.map(result => {
+          let bookKey = uniqueString()
+          return {
+            category: result.volumeInfo.categories[0],
+            imageLinks: result.volumeInfo.imageLinks.thumbnail,
+            title: result.volumeInfo.title,
+            key: bookKey,
+          }
         })
-        .catch(error => {
-          console.error(error)
-          setError('Something went side ways')
-        })
+        setSearchResults(cardInfo)
+      })
+      .catch(error => {
+        console.error(error)
+        setError("Something went side ways")
+      })
   }, [query.bookTitle])
 
   const bookCards = searchResults.map(searchResult => {
     return (
-      <Link to="/recommendations">
+      <Link to="/recommendations" className="search-card-link">
         <BookCard
           // className={"card"}
           imageLinks={searchResult.imageLinks}
