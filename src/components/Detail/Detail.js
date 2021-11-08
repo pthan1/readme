@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/AuthContext"
 const Detail = props => {
   const [bookInfo, setBookInfo] = useState({})
   const [error, setError] = useState("")
-  const { user, patchBook, isLoggedIn } = useContext(AuthContext)
+  const { user, patchBook, isLoggedin } = useContext(AuthContext)
   const { query } = useContext(QueryContext)
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Detail = props => {
   }, [query.bookId])
 
   const addToReadingListDisplay = () => {
-    if (user) {
+    if (isLoggedin) {
       if (user.readingList.some(book => book.id === bookInfo.id)) {
         return <p className="added-text">Added to Reading List</p>
       } else {
@@ -46,6 +46,8 @@ const Detail = props => {
           </button>
         )
       }
+    } else {
+      return null
     }
   }
 
