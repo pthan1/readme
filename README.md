@@ -62,6 +62,7 @@ The React architecture is based on 18 functional components, we used 2 context t
 - Implementation of contextAPI
 - Implementation of React hooks 
 - Implementation of reducer functions to manage the interaction of our context with the rest of the components
+- We were able to meet the deadlines that we set for ourselves
 
 ## Challenges & Improvements
 
