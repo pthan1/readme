@@ -4,15 +4,15 @@ Mod 3 Project
 
 ## Table of Contents
 
-- [Abstract](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
-- [Technologies](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
-- [Code Architecture](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
-- [Install and Set Up](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
-- [Illustrations](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
-- [Wins](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
-- [Challenges](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
-- [Contributors](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
-- [Project Specs](https://www.notion.so/Readme-md-033c5db170ef438f9323768888e58ee8)
+- [Abstract](#Abstract)
+- [Technologies](#Technologies)
+- [Code Architecture](#Code Architecture)
+- [Install and Set Up](#Install and Set Up)
+- [Illustrations](#Illustrations)
+- [Wins](#Wins)
+- [Challenges](#Challenges)
+- [Contributors](#Contributors)
+- [Project Specs](#Project Specs)
 
 ## Abstract
 
