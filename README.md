@@ -35,7 +35,7 @@ The goal of this project was to implement at least one self taught technology by
 
 To run the application:
 
-You can see this application on the following link;
+You can see this application on the following link:
 
 [Readme](https://readme-2107.herokuapp.com/)
 
