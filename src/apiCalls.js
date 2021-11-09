@@ -31,7 +31,7 @@ const getSingleBook = (bookId) => {
 }
 
 const addBookToReadingList = (newBook, userId) => {
-  return fetch(`http://localhost:5000/api/v1/users/add/${userId}`, {
+  return fetch(`https://readme-user-api.herokuapp.com/api/v1/users/add/${userId}`, {
 				method: 'PATCH',
 				body: JSON.stringify({newBook}),
 				headers: {
@@ -47,7 +47,7 @@ const addBookToReadingList = (newBook, userId) => {
 }
 
 const deleteBookFromReadingList = (bookIdObj, userId) => {
-  return fetch(`http://localhost:5000/api/v1/users/delete/${userId}`, {
+  return fetch(`https://readme-user-api.herokuapp.com/api/v1/users/delete/${userId}`, {
 				method: 'PATCH',
 				body: JSON.stringify(bookIdObj),
 				headers: {

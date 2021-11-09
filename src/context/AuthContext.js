@@ -1,45 +1,36 @@
-import React, { createContext, useState } from "react"
-import { addBookToReadingList, deleteBookFromReadingList } from "..//apiCalls"
+import React, { createContext, useReducer, useEffect } from "react"
+import { authReducer } from "../reducers/AuthReducer"
 
 export const AuthContext = createContext()
 
 const AuthContextProvider = props => {
-  const [isLoggedin, setIsLoggedin] = useState(false)
-  const [user, setUser] = useState(null)
-  const [patchError, setPatchError] = useState("")
+  const [auth, dispatch] = useReducer(
+    authReducer,
+    {
+      isLoggedin: false,
+      user: null
+    },
+    () => {
+      const localAuthData = localStorage.getItem("auth")
+      return localAuthData
+        ? JSON.parse(localAuthData)
+        : {
+           isLoggedin: false,
+           user: null
+        }
+    }
+  )
 
-  const toggleLogin = () => {
-    setIsLoggedin(!isLoggedin)
-  }
-
-  const grabUser = user => {
-    setUser(user)
-  }
-
-  const patchBook = (book, overview) => {
-    const newBook = {...book, overview: overview};
-    addBookToReadingList(newBook, user.id)
-    .then((newReadingList) => setUser({...user, readingList: newReadingList}))
-    .catch(error => setPatchError(error));
-  }
-
-  const deleteBook = (bookIdObj) => {
-  deleteBookFromReadingList(bookIdObj, user.id)
-  .then((newReadingList) => setUser({...user, readingList: newReadingList}))
-    .catch(error => setPatchError(error));
-  }
+  useEffect(() => {
+    localStorage.setItem("auth", JSON.stringify(auth))
+  }, [auth])
 
   return (
     <AuthContext.Provider
       value={{
-        isLoggedin,
-        toggleLogin,
-        user,
-        grabUser,
-        patchBook,
-        deleteBook
-      }}
-    >
+        auth,
+        dispatch
+      }}>
       {props.children}
     </AuthContext.Provider>
   )

@@ -24,7 +24,7 @@ cy.get('.prompt').contains('Welcome to readME!')
     cy.get('.book-card').contains('Dune');
   })
 
-  it('Should choose a book and see a book recommendations', () => {
+  it('Should choose a book after searching and see a book recommendations', () => {
     cy.get('input[type="text"]')
     .type('Dune');
 
@@ -33,7 +33,7 @@ cy.get('.prompt').contains('Welcome to readME!')
     cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=subject:Fiction&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book2'})
     .get('.book-card').first()
     .click()
-    cy.get('.book-card')
+    cy.get('.recommendation-card')
     .contains('Slightly South of Simple')
   })
 
@@ -49,7 +49,7 @@ cy.get('.prompt').contains('Welcome to readME!')
     .click()
 
     cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes/9fyxDgAAQBAJ?key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'singleBook'})
-    .get('.book-card').first()
+    .get('.recommendation-card').first()
     .click();
 
     cy.get('.detail-title').contains('Slightly South of Simple');
@@ -67,16 +67,42 @@ cy.get('.prompt').contains('Welcome to readME!')
     .click()
 
     cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes/9fyxDgAAQBAJ?key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'singleBook'})
-    .get('.book-card').first()
-    .click();
+      .get('.recommendation-card').first()
+      .click();
 
     cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=subject:Fiction&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book2'})
-    .get('.overview-display')
-    .get('.right-container')
-    .get('.go-back-arrow').click();
+      .get('.overview-display')
+      .get('.left-container')
+      .get('.go-back-arrow').click();
 
-    cy.get('.book-card')
-    .contains('Slightly South of Simple')
+    cy.get('.recommendation-card')
+     .contains('Slightly South of Simple')
 })
 
+it('The user should see a message if there are no search results to display', () => {
+  cy.get('input[type="text"]')
+    .type('Dune');
+
+  cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=Dune&maxResults=15&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'noResults'})
+  .get('.search-form')
+  .submit()
+  .get('.card-container')
+  .contains('Sorry we didn\'t find any books.')
+}
+)
+
+
+it('The user should see a message if there are no recommendations to display', () => {
+ cy.get('input[type="text"]')
+    .type('Dune');
+
+    cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=Dune&maxResults=15&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'book1'} )
+    .get('.search-form').submit();
+
+    cy.intercept('GET', 'https://www.googleapis.com/books/v1/volumes?q=subject:Fiction&maxResults=40&key=AIzaSyBf2vrFs43KCXYdALCcDGm_EeC-3BpS-5w', { fixture: 'noResults'})
+    .get('.book-card').first()
+    .click()
+    .get('.card-container-recommendation')
+    .contains('We couldn\'t find good readings with that book, try again with another book')
+})
 })

@@ -39,7 +39,6 @@ const BooksContainer = () => {
     return (
       <Link to="/recommendations" className="search-card-link">
         <BookCard
-          // className={"card"}
           imageLinks={searchResult.imageLinks}
           title={searchResult.title}
           key={searchResult.key}
@@ -49,16 +48,18 @@ const BooksContainer = () => {
     )
   })
 
-  return !error ? (
-    <div className="books-container-view">
-      <Nav />
-      <div className="display-body">
-        <p className="p-prompt">To give you a more precise recommendations, please select one of these books</p>
-        <div className="card-container">{bookCards}</div>
+  return (
+    !error ? (
+      <div className="books-container-view">
+        <Nav />
+        <div className="display-body">
+          <p className="p-prompt">Please select a book to receive tailored recommendations</p>
+          <div className="card-container">
+          {bookCards.length < 1 ? <p>Sorry we didn't find any books.  Please search again.</p> : bookCards}
+        </div>
       </div>
-    </div>
-  ) : (
-    <Redirect to="/error" />
+      </div>
+    ) : <Redirect to='/error' />
   )
 }
 

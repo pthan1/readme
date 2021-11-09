@@ -1,8 +1,7 @@
 import "./App.css"
 import BooksContainer from "../BooksContainer/BooksContainer"
-// import BookOverview from "../BookOverview/BookOverview"
 import QueryContextProvider from "../../context/QueryContext"
-import { Route } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 import LandingPage from "../LandingPage/LandingPage"
 import RecommendationView from "../RecommendationView/RecommendationView"
 import Detail from "../Detail/Detail"
@@ -16,13 +15,13 @@ const App = () => {
     <div className="App">
       <QueryContextProvider>
         <AuthContextProvider>
+        <Switch>
           <Route exact path="/">
             <LandingPage />
           </Route>
           <Route path="/login">
             <Login />
           </Route>
-
           <Route
             exact
             path="/search/:searchTerm"
@@ -34,20 +33,9 @@ const App = () => {
           <Route exact path="/details/" render={() => <Detail />} />
           <Route exact path="/error" render={() => <Error />} />
           <Route exact path="/readinglist" render={() => <ReadingList />} />
+          <Route render={() => <Error />} />
+          </Switch>
         </AuthContextProvider>
-        {/* <Route exact path="/">
-          <LandingPage />
-        </Route>
-        <Route
-          exact
-          path="/search/:searchTerm"
-          render={() => {
-            return <BooksContainer />
-          }}
-        />
-        <Route exact path="/recommendations" render={() => <RecommendationView />} />
-        <Route exact path="/details/" render={() => <Detail />} />
-        <Route exact path="/error" render={() => <Error />} /> */}
       </QueryContextProvider>
     </div>
   )

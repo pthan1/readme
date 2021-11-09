@@ -44,7 +44,6 @@ const RecommendationView = () => {
     return (
       <Link to="/details" className="rec-card-link">
         <RecommendationCard
-          // className={"card"}
           imageLinks={searchResult.imageLinks}
           title={searchResult.title}
           key={searchResult.key}
@@ -62,14 +61,11 @@ const RecommendationView = () => {
         <p className="p-prompt-recommendation">
           Because you liked <b>{query.clickedTitle} </b>you might like these books:
         </p>
-        {searchResults ? (
-          <div className="card-container-recommendation">{recommendationCards}</div>
-        ) : (
-          <div className="card-container-recommendation">
-            <h2>We couldn't find good readings with that book, try again with another book</h2>
-          </div>
-        )}
+      <div className="card-container-recommendation">
+        {recommendationCards.length < 1 ? <h2>We couldn't find good readings with that book, try again with another book</h2> :
+          recommendationCards}
       </div>
+    </div>
     </div>
   ) : (
     <Redirect to="/error" />
