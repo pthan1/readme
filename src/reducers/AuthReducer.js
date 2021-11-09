@@ -5,12 +5,13 @@ export const authReducer = (state, action) => {
         ...state, 
         isLoggedin: !state.isLoggedin
       }
+
     case "GRAB_USER":
       return {
         ...state,
         user: action.user
       }
-    
+
     case "SET_READING_LIST":
       return {
         ...state,
@@ -19,6 +20,7 @@ export const authReducer = (state, action) => {
           readingList: action.newReadingList
         }
       }
+      
     default:
       return state;
   }

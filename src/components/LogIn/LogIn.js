@@ -6,24 +6,20 @@ import "./LogIn.css"
 
 const Login = () => {
   const [users, setUsers] = useState([])
-  // const { toggleLogin, grabUser } = useContext(AuthContext)
-  const {auth, dispatch} = useContext(AuthContext)
+  const {dispatch} = useContext(AuthContext)
   const dropdownRef = useRef()
 
   useEffect(() => {
     fetch("https://readme-user-api.herokuapp.com/api/v1/users")
       .then(response => response.json())
       .then(data => {
-        const names = data.map(ele => ele.name)
         setUsers(data)
       })
   },[])
-
   
   const loginUser = () => {
     dispatch({type:"TOGGLE_ISLOGGEDIN"});
     let selectedUser = users.find(ele => ele.id === dropdownRef.current.value)
-    // grabUser(selectedUser)
     dispatch({type:"GRAB_USER", user:selectedUser})
   }
 

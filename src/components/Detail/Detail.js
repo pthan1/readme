@@ -10,7 +10,6 @@ import { AuthContext } from "../../context/AuthContext"
 const Detail = props => {
   const [bookInfo, setBookInfo] = useState({})
   const [error, setError] = useState("")
-  // const { user, patchBook, isLoggedin } = useContext(AuthContext)
   const { query } = useContext(QueryContext)
   const { auth, dispatch } = useContext(AuthContext)
 

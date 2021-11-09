@@ -1,11 +1,9 @@
 import React, { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { Link } from "react-router-dom"
-import ReadingList from "../ReadingList/ReadingList"
 import "./User.css"
 
 export default function User() {
-  // const { user, isLoggedin, toggleLogin } = useContext(AuthContext)
   const { auth, dispatch }  = useContext(AuthContext)
 
   return auth.isLoggedin ? (
@@ -22,7 +20,7 @@ export default function User() {
     </div>
   ) : (
     <Link to="/login" className="login-link">
-      <p class="link-to-login">Login</p>
+      <p className="link-to-login">Login</p>
     </Link>
   )
 }

@@ -1,14 +1,25 @@
 import React, { useContext } from "react"
 import "./ReadingListCard.css"
 import { AuthContext } from "../../context/AuthContext"
+import { deleteBookFromReadingList } from "../../apiCalls"
 
 const ReadingListCard = ({ imageLinks, title, id, overview }) => {
-  const { deleteBook } = useContext(AuthContext)
+  const {auth, dispatch } = useContext(AuthContext)
   const bookIdObj = { bookId: id }
 
   const handleClick = e => {
     e.preventDefault()
     deleteBook(bookIdObj)
+  }
+
+  const deleteBook = (bookIdObj) => {
+  deleteBookFromReadingList(bookIdObj, auth.user.id)
+  .then((newReadingList) =>  
+  dispatch({
+    type: 'SET_READING_LIST',
+    newReadingList: newReadingList
+  }))
+    .catch(error => console.warn(error));
   }
 
   return (
