@@ -10,6 +10,15 @@ export const authReducer = (state, action) => {
         ...state,
         user: action.user
       }
+    
+    case "SET_READING_LIST":
+      return {
+        ...state,
+        user: {
+          ...state.user, 
+          readingList: action.newReadingList
+        }
+      }
     default:
       return state;
   }

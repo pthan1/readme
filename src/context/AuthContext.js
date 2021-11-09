@@ -5,9 +5,8 @@ import { authReducer } from "../reducers/AuthReducer"
 export const AuthContext = createContext()
 
 const AuthContextProvider = props => {
-  const [isLoggedin, setIsLoggedin] = useState(false)
-  const [user, setUser] = useState(null)
-  const [patchError, setPatchError] = useState("")
+  // const [isLoggedin, setIsLoggedin] = useState(false)
+  // const [user, setUser] = useState(null)
 
   const [auth, dispatch] = useReducer(
     authReducer,
@@ -30,26 +29,26 @@ const AuthContextProvider = props => {
     localStorage.setItem("auth", JSON.stringify(auth))
   }, [auth])
 
-  const toggleLogin = () => {
-    setIsLoggedin(!isLoggedin)
-  }
+  // const toggleLogin = () => {
+  //   setIsLoggedin(!isLoggedin)
+  // }
 
-  const grabUser = user => {
-    setUser(user)
-  }
+  // const grabUser = user => {
+  //   setUser(user)
+  // }
 
-  const patchBook = (book, overview) => {
-    const newBook = {...book, overview: overview};
-    addBookToReadingList(newBook, user.id)
-    .then((newReadingList) => setUser({...user, readingList: newReadingList}))
-    .catch(error => setPatchError(error));
-  }
+  // const patchBook = (book, overview) => {
+  //   const newBook = {...book, overview: overview};
+  //   addBookToReadingList(newBook, user.id)
+  //   .then((newReadingList) => setUser({...user, readingList: newReadingList}))
+  //   .catch(error => console.warn(error));
+  // }
 
-  const deleteBook = (bookIdObj) => {
-  deleteBookFromReadingList(bookIdObj, user.id)
-  .then((newReadingList) => setUser({...user, readingList: newReadingList}))
-    .catch(error => setPatchError(error));
-  }
+  // const deleteBook = (bookIdObj) => {
+  // deleteBookFromReadingList(bookIdObj, user.id)
+  // .then((newReadingList) => setUser({...user, readingList: newReadingList}))
+  //   .catch(error => console.warn(error));
+  // }
 
   return (
     <AuthContext.Provider
@@ -58,8 +57,8 @@ const AuthContextProvider = props => {
         // toggleLogin,
         // user,
         // grabUser,
-        patchBook,
-        deleteBook,
+        // patchBook,
+        // deleteBook,
         auth,
         dispatch
       }}

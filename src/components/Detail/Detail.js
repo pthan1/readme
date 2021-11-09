@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import { Link, Redirect } from "react-router-dom"
-import { getSingleBook } from "../../apiCalls"
+import { getSingleBook, addBookToReadingList } from "../../apiCalls"
 import { QueryContext } from "../../context/QueryContext"
 import Nav from "../Nav/Nav"
 import "./Detail.css"
@@ -10,8 +10,9 @@ import { AuthContext } from "../../context/AuthContext"
 const Detail = props => {
   const [bookInfo, setBookInfo] = useState({})
   const [error, setError] = useState("")
-  const { user, patchBook, isLoggedin } = useContext(AuthContext)
+  // const { user, patchBook, isLoggedin } = useContext(AuthContext)
   const { query } = useContext(QueryContext)
+  const { auth, dispatch } = useContext(AuthContext)
 
   useEffect(() => {
     getSingleBook(query.bookId)
@@ -31,8 +32,8 @@ const Detail = props => {
   }, [query.bookId])
 
   const addToReadingListDisplay = () => {
-    if (isLoggedin) {
-      if (user.readingList.some(book => book.id === bookInfo.id)) {
+    if (auth.isLoggedin) {
+      if (auth.user.readingList.some(book => book.id === bookInfo.id)) {
         return <p className="added-text">Added to Reading List</p>
       } else {
         return (
@@ -48,6 +49,17 @@ const Detail = props => {
     } else {
       return null
     }
+  }
+   
+  const patchBook = (book, overview) => {
+    const newBook = {...book, overview: overview};
+    addBookToReadingList(newBook, auth.user.id)
+    .then((newReadingList) => {
+      dispatch({
+        type:'SET_READING_LIST', 
+        newReadingList: newReadingList
+      })
+    })
   }
 
   return !error && query.bookId ? (
