@@ -55,6 +55,8 @@ To run Cypress tests:
 The React architecture is based on 18 functional components, we used 2 context to manage state globally using local storage and reducer functions to make these more readable and to pass just two values as props to any of our child components.
 
 ## Illustrations
+![readme-screen-shots](https://user-images.githubusercontent.com/82873669/140862033-31ad423c-a0a9-4ba2-96ea-a93682b9b385.gif)
+
 
 ## Wins
 
