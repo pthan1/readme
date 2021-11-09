@@ -10,7 +10,7 @@ Mod 3 Project
 - [Install and Set Up](#Install-and-Set-Up)
 - [Illustrations](#Illustrations)
 - [Wins](#Wins)
-- [Challenges & Improvements](#Challenges-&-Improvements)
+- [Challenges](#Challenges)
 - [Contributors](#Contributors)
 - [Project Specs](#Project-Specs)
 
@@ -66,7 +66,7 @@ The React architecture is based on 18 functional components, we used 2 context t
 - Implementation of reducer functions to manage the interaction of our context with the rest of the components
 - We were able to meet the deadlines that we set for ourselves
 
-## Challenges & Improvements
+## Challenges
 
 - We had challenges cleaning the data
 - We had challenges making our state persist after refreshing the browser
