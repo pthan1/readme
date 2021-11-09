@@ -6,13 +6,13 @@ Mod 3 Project
 
 - [Abstract](#Abstract)
 - [Technologies](#Technologies)
-- [Code Architecture](#Code Architecture)
-- [Install and Set Up](#Install and Set Up)
+- [Code Architecture](#Code-Architecture)
+- [Install and Set Up](#Install-and-Set-Up)
 - [Illustrations](#Illustrations)
 - [Wins](#Wins)
 - [Challenges](#Challenges)
 - [Contributors](#Contributors)
-- [Project Specs](#Project Specs)
+- [Project Specs](#Project-Specs)
 
 ## Abstract
 
