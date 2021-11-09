@@ -10,7 +10,7 @@ Mod 3 Project
 - [Install and Set Up](#Install-and-Set-Up)
 - [Illustrations](#Illustrations)
 - [Wins](#Wins)
-- [Challenges](#Challenges)
+- [Challenges & Improvements](#Challenges-&-Improvements)
 - [Contributors](#Contributors)
 - [Project Specs](#Project-Specs)
 
