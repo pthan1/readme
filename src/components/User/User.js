@@ -5,12 +5,18 @@ import ReadingList from "../ReadingList/ReadingList"
 import "./User.css"
 
 export default function User() {
-  const { user, isLoggedin, toggleLogin } = useContext(AuthContext)
-  return isLoggedin ? (
+  // const { user, isLoggedin, toggleLogin } = useContext(AuthContext)
+  const { auth, dispatch }  = useContext(AuthContext)
+
+  return auth.isLoggedin ? (
     <div className="loggedin">
-      <p>Hello, {user.name} </p>
+      <p>Hello, {auth.user.name} </p>
       {window.location.pathname === "/readinglist" ? null : <Link to="/readinglist"> <p className="reading-list-link"> Reading List </p> </Link>}
-      <p onClick={toggleLogin} className="logout">
+      <p onClick={()=>{
+        dispatch({type:"TOGGLE_ISLOGGEDIN"})
+        dispatch({type:"GRAB_USER",user:null})
+        }} 
+        className="logout">
         Log out
       </p>
     </div>
