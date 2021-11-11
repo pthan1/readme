@@ -62,7 +62,8 @@ const RecommendationView = () => {
           Because you liked <b>{query.clickedTitle} </b>you might like these books:
         </p>
       <div className="card-container-recommendation">
-        {recommendationCards.length < 1 ? <h2>We couldn't find good readings with that book, try again with another book</h2> :
+        {!searchResults.length && <h1>...Loading...</h1>}
+        {!error < 1 ? <h2>We couldn't find good readings with that book, try again with another book</h2> :
           recommendationCards}
       </div>
     </div>
